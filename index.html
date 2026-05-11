@@ -1,0 +1,2086 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#ac1d3c">
+<title>Wissens-Hub · Tagesbetreuung Kinderreha · Fachklinik Prinzregent Luitpold</title>
+<style>
+:root{
+  --bordeaux:#ac1d3c; --bordeaux-700:#8a1632; --bordeaux-800:#6e1126; --bordeaux-50:#fbeef1;
+  --gold:#e7ae15; --gold-50:#fbf3dc;
+  --terra:#c96e55; --blue:#94b6d2; --blue-700:#6a93b3;
+  --ink:#1a1a1a; --ink-2:#3a3a3a; --ink-3:#666; --ink-4:#8c8c8c;
+  --line:#e6e3df; --line-2:#efece7;
+  --paper:#fbfaf7; --paper-2:#f5f2ec; --white:#fff;
+  --ok:#2e7d4f; --warn:#a35c00;
+  --r-sm:6px; --r:10px; --r-lg:16px; --r-xl:24px;
+  --shadow-sm:0 1px 2px rgba(20,15,10,.04),0 1px 1px rgba(20,15,10,.03);
+  --shadow:0 8px 24px -8px rgba(20,15,10,.10),0 2px 6px rgba(20,15,10,.04);
+  --shadow-lg:0 24px 60px -20px rgba(20,15,10,.18),0 8px 16px -8px rgba(20,15,10,.08);
+  --tr:200ms cubic-bezier(.2,.7,.3,1); --tr-slow:420ms cubic-bezier(.2,.7,.3,1);
+  --content:min(1200px,92vw); --content-narrow:min(820px,92vw);
+  --serif:"Iowan Old Style","Apple Garamond","Palatino","Georgia",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Inter","Helvetica Neue",Arial,sans-serif;
+  --safe-bottom:env(safe-area-inset-bottom,0);
+  --safe-top:env(safe-area-inset-top,0);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.55;font-size:16px;
+  font-feature-settings:"ss01","cv02";overflow-x:hidden}
+a{color:var(--bordeaux);text-decoration:none;text-underline-offset:3px}
+a:hover{text-decoration:underline}
+::selection{background:var(--bordeaux);color:#fff}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.012em;color:var(--ink);margin:0}
+h1{font-size:clamp(2.2rem,5.2vw,4rem);line-height:1.05;letter-spacing:-.022em}
+h2{font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.15;letter-spacing:-.014em}
+h3{font-size:1.18rem;line-height:1.25;font-weight:600}
+h4{font-size:1rem;line-height:1.3;font-family:var(--sans);font-weight:600;letter-spacing:.01em}
+p{margin:0 0 .85em}
+.eyebrow{font-family:var(--sans);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bordeaux);font-weight:600}
+.muted{color:var(--ink-3)}
+.scroll-mt{scroll-margin-top:80px}
+.hidden{display:none!important}
+button{font:inherit;color:inherit}
+
+/* ============ LOGIN GATE ============ */
+.gate{position:fixed;inset:0;z-index:200;background:linear-gradient(135deg,#3a0612 0%,#7d1228 45%,#ac1d3c 100%);
+  display:grid;place-items:center;padding:1.5rem;overflow:auto;
+  animation:fadeIn .6s ease-out}
+.gate::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 18%,rgba(231,174,21,.18) 0%,transparent 40%),
+    radial-gradient(circle at 88% 82%,rgba(231,174,21,.10) 0%,transparent 50%),
+    radial-gradient(circle at 50% 60%,rgba(255,255,255,.04) 0%,transparent 70%);
+  pointer-events:none}
+.gate-card{position:relative;width:min(440px,100%);background:var(--paper);border-radius:24px;
+  padding:2.5rem 2rem;box-shadow:0 30px 80px -20px rgba(0,0,0,.5),0 8px 16px -8px rgba(0,0,0,.2);
+  animation:gateRise .7s cubic-bezier(.2,.8,.3,1)}
+@keyframes gateRise{from{transform:translateY(28px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.gate-mark{width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--bordeaux),var(--bordeaux-800));
+  display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:1.55rem;font-weight:600;
+  box-shadow:0 8px 20px -6px rgba(172,29,60,.5);margin-bottom:1.25rem}
+.gate-eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bordeaux);font-weight:600;margin-bottom:.4rem}
+.gate-card h1{font-size:1.85rem;line-height:1.12;margin-bottom:.5rem}
+.gate-card .lede{color:var(--ink-3);font-size:.95rem;margin-bottom:1.75rem}
+.gate-field{margin-bottom:.9rem}
+.gate-field label{display:block;font-size:.78rem;letter-spacing:.06em;color:var(--ink-3);font-weight:600;text-transform:uppercase;margin-bottom:.4rem}
+.gate-field input{width:100%;padding:.85rem 1rem;border:1.5px solid var(--line);border-radius:12px;
+  font:inherit;background:#fff;color:var(--ink);transition:all var(--tr)}
+.gate-field input:focus{outline:none;border-color:var(--bordeaux);box-shadow:0 0 0 4px rgba(172,29,60,.10)}
+.gate-error{display:none;background:var(--bordeaux-50);color:var(--bordeaux-800);
+  padding:.7rem .9rem;border-radius:10px;font-size:.88rem;margin-bottom:.9rem;border-left:3px solid var(--bordeaux)}
+.gate-error.show{display:block;animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.gate-btn{width:100%;padding:.95rem 1rem;background:var(--bordeaux);color:#fff;border:none;
+  border-radius:12px;font-weight:600;font-size:1rem;cursor:pointer;transition:all var(--tr);
+  box-shadow:0 8px 20px -8px rgba(172,29,60,.5)}
+.gate-btn:hover{background:var(--bordeaux-700);transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(172,29,60,.6)}
+.gate-foot{margin-top:1.6rem;padding-top:1.2rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:1rem;font-size:.78rem;color:var(--ink-3)}
+.gate-foot .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-right:.4rem;vertical-align:middle}
+
+/* ============ TOP BAR ============ */
+.top{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.86);
+  backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line);
+  padding-top:var(--safe-top)}
+.top-inner{width:var(--content);margin:0 auto;height:64px;display:flex;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;flex-shrink:0;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand-mark{width:34px;height:34px;border-radius:8px;
+  background:linear-gradient(135deg,var(--bordeaux),var(--bordeaux-800));
+  display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:600;font-size:1.05rem;
+  box-shadow:var(--shadow-sm)}
+.brand-text{line-height:1.1;font-size:.86rem;color:var(--ink-2)}
+.brand-text strong{display:block;color:var(--ink);font-weight:600;font-size:.96rem;letter-spacing:-.005em}
+.nav{display:flex;gap:.2rem;margin-left:auto;align-items:center}
+.nav a.nlink{font-size:.92rem;padding:.5rem .85rem;border-radius:8px;color:var(--ink-2);font-weight:500;
+  transition:background var(--tr),color var(--tr)}
+.nav a.nlink:hover{background:var(--paper-2);color:var(--ink);text-decoration:none}
+.search-wrap{position:relative}
+.search{display:flex;align-items:center;gap:.5rem;min-width:260px;padding:.45rem .7rem;
+  border:1px solid var(--line);border-radius:999px;background:var(--white);transition:all var(--tr)}
+.search:focus-within{border-color:var(--bordeaux);box-shadow:0 0 0 3px rgba(172,29,60,.12)}
+.search input{border:none;outline:none;background:transparent;width:100%;font:inherit;color:var(--ink);font-size:.92rem}
+.search svg{flex-shrink:0;color:var(--ink-3)}
+.kbd{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;color:var(--ink-4);
+  padding:2px 6px;border:1px solid var(--line);border-radius:4px;background:var(--paper-2)}
+.search-results{position:absolute;top:calc(100% + 8px);right:0;width:min(520px,92vw);
+  background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);
+  max-height:70vh;overflow:auto;display:none;z-index:60}
+.search-results.show{display:block;animation:rise .25s cubic-bezier(.2,.7,.3,1)}
+.search-results .sr-group{padding:.6rem 1rem .3rem;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:600;background:var(--paper)}
+.search-results .sr-item{display:block;padding:.75rem 1rem;border-top:1px solid var(--line-2);color:var(--ink);cursor:pointer}
+.search-results .sr-item:hover{background:var(--paper);text-decoration:none}
+.search-results .sr-item .sr-title{font-weight:500;font-size:.95rem}
+.search-results .sr-item .sr-snippet{font-size:.82rem;color:var(--ink-3);margin-top:.2rem;line-height:1.45}
+.search-results .sr-item mark{background:var(--gold-50);color:var(--ink);padding:0 2px;border-radius:2px}
+.search-results .sr-empty{padding:1.5rem 1rem;text-align:center;color:var(--ink-3);font-size:.9rem}
+
+.btn-emergency{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .9rem;border-radius:999px;
+  background:var(--bordeaux);color:#fff!important;font-weight:600;font-size:.9rem;
+  border:1px solid var(--bordeaux-700);box-shadow:0 1px 0 rgba(0,0,0,.05) inset,var(--shadow-sm);
+  transition:all var(--tr);cursor:pointer}
+.btn-emergency:hover{background:var(--bordeaux-700);text-decoration:none;transform:translateY(-1px);box-shadow:var(--shadow)}
+.pulse{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.hamburger,.search-mobile-btn{display:none;background:none;border:none;padding:.5rem;cursor:pointer;color:var(--ink-2);border-radius:8px}
+.hamburger:hover,.search-mobile-btn:hover{background:var(--paper-2)}
+
+@media (max-width:980px){
+  .nav,.search-wrap{display:none}
+  .hamburger,.search-mobile-btn{display:grid;place-items:center}
+  .brand-text{display:none}
+  .top-inner{height:58px;gap:.4rem;width:96vw}
+  .btn-emergency{padding:.42rem .7rem;font-size:.85rem}
+  .btn-emergency .pulse{width:6px;height:6px}
+  .btn-emergency .lbl{display:none}
+  .btn-emergency::after{content:"Notfall";font-size:.85rem}
+}
+.mobile-nav{display:none;position:fixed;inset:58px 0 0 0;background:var(--paper);z-index:49;
+  padding:1rem 5vw;overflow:auto;flex-direction:column}
+.mobile-nav.open{display:flex}
+.mobile-nav .ms-search{display:flex;margin-bottom:1rem}
+.mobile-nav a{display:flex;align-items:center;padding:1rem .5rem;border-bottom:1px solid var(--line);color:var(--ink);font-size:1.05rem;gap:.7rem}
+.mobile-nav a .arrow-mob{margin-left:auto;color:var(--ink-3)}
+.mobile-nav .ms-emergency{margin-top:1.2rem;background:var(--bordeaux);color:#fff;
+  border-radius:14px;padding:1rem;display:flex;align-items:center;gap:.7rem;justify-content:center;
+  font-weight:600}
+.mobile-nav .ms-emergency:hover{text-decoration:none}
+
+/* Mobile search drawer */
+.mobile-search-bar{display:none;position:fixed;top:0;left:0;right:0;z-index:55;background:var(--paper);
+  padding:.7rem 4vw;border-bottom:1px solid var(--line);align-items:center;gap:.5rem;padding-top:calc(.7rem + var(--safe-top))}
+.mobile-search-bar.open{display:flex}
+.mobile-search-bar .search{flex:1;min-width:0}
+.mobile-search-bar .ms-close{background:none;border:none;padding:.5rem;cursor:pointer;color:var(--ink-2)}
+
+/* ============ HERO + SECTIONS ============ */
+.hero{width:var(--content);margin:5rem auto 4rem;display:grid;grid-template-columns:1.6fr 1fr;gap:4rem;align-items:end}
+@media (max-width:980px){.hero{grid-template-columns:1fr;gap:2rem;margin:2rem auto 2.5rem}}
+.hero h1 .accent{background:linear-gradient(90deg,var(--bordeaux) 0%,var(--terra) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{font-size:1.12rem;color:var(--ink-2);max-width:560px;margin-top:1.4rem;line-height:1.55}
+@media (max-width:980px){.hero .lede{font-size:1rem}}
+.hero-meta{border-left:2px solid var(--gold);padding-left:1.25rem;margin-top:.4rem}
+.hero-meta dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:.9rem;font-weight:600}
+.hero-meta dt:first-child{margin-top:0}
+.hero-meta dd{margin:.15rem 0 0;font-size:.94rem;color:var(--ink)}
+.hero-quick{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.chip{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .85rem;background:var(--white);
+  border:1px solid var(--line);border-radius:999px;font-size:.87rem;color:var(--ink-2);
+  transition:all var(--tr);cursor:pointer}
+.chip:hover{border-color:var(--bordeaux);color:var(--bordeaux);text-decoration:none}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+section.band{padding:5rem 0;border-top:1px solid var(--line-2)}
+@media (max-width:780px){section.band{padding:3.2rem 0}}
+section.band.alt{background:var(--paper-2)}
+.band-inner{width:var(--content);margin:0 auto}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+@media (max-width:780px){.section-head{margin-bottom:1.5rem;gap:1rem}}
+.section-head .eyebrow{margin-bottom:.6rem}
+.section-head h2{max-width:680px}
+.section-head .lede{max-width:520px;color:var(--ink-3);font-size:.98rem;line-height:1.55;margin:0}
+
+/* ============ VISION/MISSION ============ */
+.golden{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media (max-width:880px){.golden{grid-template-columns:1fr}}
+.golden article{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.75rem 1.5rem;box-shadow:var(--shadow-sm);transition:all var(--tr)}
+.golden article:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.golden .step{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  background:var(--bordeaux-50);color:var(--bordeaux);font-family:var(--serif);font-size:1.1rem;font-weight:600;margin-bottom:1rem}
+.golden h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.4rem}
+.golden p{color:var(--ink-2);font-size:.96rem}
+
+.values{margin-top:3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media (max-width:980px){.values{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.values{grid-template-columns:1fr}}
+.value{padding:1.5rem 1.25rem;border-radius:var(--r-lg);
+  background:linear-gradient(180deg,var(--white) 0%,var(--paper) 100%);
+  border:1px solid var(--line);transition:all var(--tr)}
+.value:hover{border-color:var(--gold);transform:translateY(-2px)}
+.value .vicon{font-family:var(--serif);color:var(--bordeaux);font-size:1.6rem;font-weight:600;line-height:1}
+.value h4{margin:.7rem 0 .25rem;font-size:1.05rem}
+.value .anchor{font-size:.86rem;color:var(--ink-3);font-style:italic;margin-bottom:.7rem}
+.value ul{margin:.5rem 0 0;padding-left:1rem;font-size:.88rem;color:var(--ink-2);line-height:1.5}
+.value li{margin:.3rem 0}
+.value li::marker{color:var(--gold)}
+
+.creed{margin-top:3rem;background:var(--bordeaux);color:#fff;border-radius:var(--r-lg);
+  padding:2rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center}
+@media (max-width:720px){.creed{grid-template-columns:1fr;padding:1.5rem}}
+.creed .cross{width:56px;height:56px;border-radius:12px;background:rgba(255,255,255,.12);
+  display:grid;place-items:center;font-family:var(--serif);font-size:1.8rem}
+.creed h3{color:#fff;font-family:var(--serif);margin-bottom:.4rem;font-size:1.3rem}
+.creed p{color:rgba(255,255,255,.92);margin:0;font-size:.97rem;line-height:1.55}
+
+/* ============ TIMELINE (onboarding info only - no checklist) ============ */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media (max-width:920px){.timeline{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.timeline{grid-template-columns:1fr}}
+.tline-step{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem 1.25rem}
+.tline-num{font-family:var(--serif);font-size:.92rem;color:var(--bordeaux);font-weight:600;letter-spacing:.04em}
+.tline-title{font-family:var(--serif);font-size:1.4rem;margin:.2rem 0 .8rem}
+.tline-step ul{margin:.5rem 0 0;padding-left:1.15rem;font-size:.92rem;color:var(--ink-2);line-height:1.55}
+.tline-step li{margin:.4rem 0}
+.tline-step li::marker{color:var(--bordeaux)}
+
+/* ============ LERNPFADE CARDS + FULL PAGE ============ */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media (max-width:980px){.paths{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){.paths{grid-template-columns:1fr}}
+.path{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;transition:all var(--tr);cursor:pointer}
+.path:hover{border-color:var(--bordeaux-50);box-shadow:var(--shadow);transform:translateY(-2px)}
+.path-head{padding:1.5rem 1.5rem 1rem}
+.badge{display:inline-block;padding:.2rem .55rem;font-size:.72rem;letter-spacing:.05em;font-weight:600;
+  background:var(--gold-50);color:var(--warn);border-radius:4px;margin-bottom:.7rem}
+.badge.pflicht{background:var(--bordeaux-50);color:var(--bordeaux-700)}
+.badge.modul{background:#e8f0f7;color:var(--blue-700)}
+.path-head h3{font-family:var(--serif);font-size:1.35rem;margin-bottom:.3rem}
+.path-head p{font-size:.92rem;color:var(--ink-3);margin:0}
+.path-body{padding:0 1.5rem;flex:1}
+.path-body ol{padding-left:1.2rem;font-size:.9rem;color:var(--ink-2);line-height:1.6;margin:0 0 1rem}
+.path-body li{margin:.4rem 0}
+.path-foot{padding:1rem 1.5rem;background:var(--paper);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--ink-3)}
+.path-foot .duration::before{content:"⏱";margin-right:.3rem;opacity:.6}
+.path-foot .open{color:var(--bordeaux);font-weight:600}
+
+/* Lernpfad Full-Page Overlay */
+.lp-overlay{position:fixed;inset:0;z-index:100;background:var(--paper);display:none;flex-direction:column;
+  animation:slideUp .4s cubic-bezier(.2,.7,.3,1)}
+.lp-overlay.open{display:flex}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.lp-top{position:sticky;top:0;z-index:5;background:rgba(251,250,247,.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);padding:.8rem 0;padding-top:calc(.8rem + var(--safe-top))}
+.lp-top-inner{width:var(--content);margin:0 auto;display:flex;align-items:center;gap:1rem}
+.lp-back{display:inline-flex;align-items:center;gap:.5rem;background:none;border:1px solid var(--line);
+  padding:.5rem .8rem;border-radius:999px;cursor:pointer;color:var(--ink-2);transition:all var(--tr);font-size:.88rem}
+.lp-back:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+.lp-title{margin-left:auto;font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--ink)}
+@media (max-width:780px){.lp-title{display:none}}
+.lp-content{flex:1;overflow:auto}
+.lp-hero{width:var(--content);margin:0 auto;padding:3rem 0 2rem}
+@media (max-width:780px){.lp-hero{padding:1.8rem 0 1.4rem}}
+.lp-hero .lp-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;font-size:.86rem;color:var(--ink-3)}
+.lp-hero .lp-meta .badge{margin-bottom:0}
+.lp-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:.6rem}
+.lp-hero .lp-lede{font-size:1.1rem;color:var(--ink-2);max-width:680px;line-height:1.5}
+.lp-body{width:var(--content);margin:0 auto;padding-bottom:5rem;display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start}
+@media (max-width:880px){.lp-body{grid-template-columns:1fr;gap:1.5rem;padding-bottom:3rem}}
+.lp-toc{position:sticky;top:88px;border-left:2px solid var(--line);padding-left:1.25rem}
+@media (max-width:880px){.lp-toc{position:static;border-left:none;padding-left:0;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:.5rem}}
+.lp-toc-title{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:.7rem}
+.lp-toc a{display:block;padding:.4rem 0;color:var(--ink-2);font-size:.9rem;border-bottom:1px solid var(--line-2);transition:color var(--tr)}
+.lp-toc a:hover,.lp-toc a.active{color:var(--bordeaux);text-decoration:none}
+.lp-toc a:last-child{border-bottom:none}
+.lp-modules{display:flex;flex-direction:column;gap:2.5rem}
+.lp-module{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:2rem 1.75rem;scroll-margin-top:88px}
+@media (max-width:560px){.lp-module{padding:1.4rem 1.1rem}}
+.lp-module .m-num{font-family:var(--serif);font-size:.92rem;color:var(--bordeaux);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.lp-module h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin:.3rem 0 1rem;line-height:1.2}
+.lp-module h3{font-family:var(--sans);font-size:1.02rem;margin:1.4rem 0 .5rem;color:var(--ink)}
+.lp-module h4{font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;color:var(--bordeaux);margin:1.3rem 0 .4rem;font-weight:600}
+.lp-module p{font-size:1rem;line-height:1.65;color:var(--ink-2)}
+.lp-module ul,.lp-module ol{padding-left:1.2rem;color:var(--ink-2);line-height:1.65;margin:.4rem 0 .9rem}
+.lp-module li{margin:.35rem 0}
+.lp-module li::marker{color:var(--bordeaux)}
+.lp-module .takeaway{margin-top:1.4rem;background:var(--gold-50);border-left:3px solid var(--gold);
+  padding:1rem 1.2rem;border-radius:0 var(--r) var(--r) 0}
+.lp-module .takeaway strong{color:var(--bordeaux-800);display:block;margin-bottom:.3rem;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase}
+.lp-module .danger{margin-top:1.4rem;background:var(--bordeaux-50);border-left:3px solid var(--bordeaux);
+  padding:1rem 1.2rem;border-radius:0 var(--r) var(--r) 0}
+.lp-module .danger strong{color:var(--bordeaux-800);display:block;margin-bottom:.3rem;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase}
+.lp-module .twocol{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.8rem 0}
+@media (max-width:680px){.lp-module .twocol{grid-template-columns:1fr}}
+.lp-module .twocol > div{background:var(--paper);border-radius:var(--r);padding:1rem 1.1rem;border:1px solid var(--line)}
+.lp-module .twocol > div h4{margin-top:0}
+.lp-module blockquote{margin:1rem 0;padding:.4rem 0 .4rem 1.2rem;border-left:3px solid var(--gold);
+  font-family:var(--serif);font-style:italic;color:var(--ink-2);font-size:1.1rem;line-height:1.5}
+
+/* ============ DIAGNOSE ============ */
+.diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media (max-width:920px){.diag-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:580px){.diag-grid{grid-template-columns:1fr}}
+.diag-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.5rem 1.25rem;transition:all var(--tr);cursor:pointer;position:relative}
+.diag-card:hover{border-color:var(--bordeaux-50);box-shadow:var(--shadow);transform:translateY(-2px)}
+.diag-card h4{font-family:var(--serif);font-size:1.2rem;margin-bottom:.4rem}
+.diag-card p{font-size:.88rem;color:var(--ink-3);margin:0}
+.diag-card .arrow-r{position:absolute;right:1.1rem;top:1.4rem;color:var(--bordeaux);opacity:.5;transition:all var(--tr)}
+.diag-card:hover .arrow-r{opacity:1;transform:translateX(3px)}
+
+/* ============ MODAL ============ */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(20,15,10,.45);z-index:80;
+  align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(2px)}
+@media (max-width:560px){.modal-backdrop{padding:0;align-items:flex-end}}
+.modal-backdrop.open{display:flex;animation:fade .25s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{background:var(--paper);border-radius:var(--r-xl);max-width:980px;width:100%;max-height:90vh;overflow:auto;
+  box-shadow:var(--shadow-lg);animation:rise .35s cubic-bezier(.2,.7,.3,1)}
+@media (max-width:560px){.modal{border-radius:var(--r-xl) var(--r-xl) 0 0;max-height:94vh;
+  animation:slideUpModal .35s cubic-bezier(.2,.7,.3,1)}}
+@keyframes rise{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideUpModal{from{transform:translateY(100%)}to{transform:none}}
+.modal-head{padding:1.4rem 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper);z-index:1}
+.modal-head h3{font-family:var(--serif);font-size:1.55rem}
+@media (max-width:560px){.modal-head{padding:1.1rem 1.2rem}.modal-head h3{font-size:1.25rem}}
+.modal-close{background:none;border:none;cursor:pointer;padding:.5rem;border-radius:50%;
+  width:36px;height:36px;display:grid;place-items:center;color:var(--ink-3);transition:all var(--tr)}
+.modal-close:hover{background:var(--paper-2);color:var(--ink)}
+.modal-body{padding:1.6rem}
+@media (max-width:560px){.modal-body{padding:1.2rem}}
+.modal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+@media (max-width:780px){.modal-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.modal-grid{grid-template-columns:1fr}}
+.mcol{background:var(--white);border-radius:var(--r);padding:1rem;border-top:3px solid}
+.mcol.see{border-color:var(--blue)}.mcol.mean{border-color:var(--terra)}
+.mcol.help{border-color:var(--ok)}.mcol.harm{border-color:var(--bordeaux)}
+.mcol h5{font-family:var(--sans);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .6rem;font-weight:600}
+.mcol ul{margin:0;padding-left:1rem;font-size:.9rem;color:var(--ink-2);line-height:1.55}
+.mcol li{margin:.35rem 0}
+
+/* ============ WISSENSDATENBANK ============ */
+.kb-filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;align-items:center}
+.kb-filters .flabel{font-size:.74rem;color:var(--ink-3);margin-right:.4rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.tag{padding:.4rem .85rem;border:1px solid var(--line);border-radius:999px;background:var(--white);
+  font-size:.84rem;color:var(--ink-2);cursor:pointer;transition:all var(--tr);font-family:inherit}
+.tag:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+.tag.on{background:var(--bordeaux);color:#fff;border-color:var(--bordeaux)}
+@media (max-width:560px){.tag{padding:.5rem .9rem;font-size:.85rem}}
+
+.kb-articles{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media (max-width:780px){.kb-articles{grid-template-columns:1fr}}
+.kb-article{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:1.4rem 1.4rem;transition:all var(--tr);cursor:pointer;position:relative;display:flex;flex-direction:column;gap:.5rem}
+.kb-article:hover{border-color:var(--bordeaux-50);box-shadow:var(--shadow);transform:translateY(-2px)}
+.kb-article .kb-cat{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bordeaux);font-weight:600}
+.kb-article h4{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ink);line-height:1.25}
+.kb-article p{font-size:.9rem;color:var(--ink-3);margin:0;line-height:1.5}
+.kb-article .kb-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.kb-article .kb-tag{font-size:.7rem;padding:.18rem .5rem;background:var(--paper-2);border-radius:4px;color:var(--ink-3)}
+
+/* ============ FAQ (generisch) ============ */
+.kb-list{display:grid;gap:.7rem}
+details.qa{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:0;transition:border-color var(--tr);overflow:hidden}
+details.qa[open]{border-color:var(--bordeaux-50);box-shadow:var(--shadow-sm)}
+details.qa summary{list-style:none;cursor:pointer;padding:1.15rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;
+  font-weight:500;color:var(--ink);font-size:1rem}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary .qtitle{flex:1;padding-right:1rem}
+details.qa summary .arrow{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--paper-2);
+  display:grid;place-items:center;color:var(--ink-3);transition:all var(--tr);font-size:.7rem}
+details.qa[open] summary .arrow{transform:rotate(180deg);background:var(--bordeaux);color:#fff}
+details.qa .qbody{padding:0 1.25rem 1.25rem;color:var(--ink-2);font-size:.95rem;line-height:1.6}
+details.qa .qbody p{margin:.2rem 0 .7rem}
+details.qa .qbody ul,details.qa .qbody ol{margin:.3rem 0 .9rem;padding-left:1.2rem}
+details.qa .qbody li{margin:.25rem 0}
+details.qa .qtags{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.4rem}
+details.qa .qtag{font-size:.72rem;padding:.18rem .55rem;background:var(--paper-2);border-radius:4px;color:var(--ink-3)}
+.qa-empty{padding:2rem;text-align:center;color:var(--ink-3)}
+.qa-count{font-size:.85rem;color:var(--ink-3);margin-bottom:.8rem}
+
+/* ============ ESKALATION & SCHUTZ ============ */
+.row{display:grid;gap:1.5rem}
+.row.r2{grid-template-columns:1fr 1fr}
+@media (max-width:880px){.row.r2{grid-template-columns:1fr}}
+.escalation{background:var(--white);border-radius:var(--r);padding:1.2rem 1.25rem;border-left:3px solid var(--gold)}
+.escalation h4{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem}
+.escalation ol{margin:.5rem 0 0;padding-left:1.2rem;font-size:.92rem;color:var(--ink-2);line-height:1.55}
+.escalation ol li{margin:.4rem 0}
+.escalation ol strong{color:var(--bordeaux)}
+
+/* ============ FAB + NOTFALL POPUP ============ */
+.fab{position:fixed;right:1.4rem;bottom:calc(1.4rem + var(--safe-bottom));z-index:60;
+  background:var(--bordeaux);color:#fff;border:none;border-radius:999px;
+  padding:.9rem 1.35rem;font-weight:600;font-size:.95rem;cursor:pointer;
+  display:flex;align-items:center;gap:.5rem;
+  box-shadow:0 8px 24px -6px rgba(172,29,60,.5),0 2px 6px rgba(20,15,10,.1);
+  transition:all var(--tr)}
+.fab:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 36px -8px rgba(172,29,60,.55)}
+@media (max-width:560px){.fab{right:.9rem;bottom:calc(.9rem + var(--safe-bottom));padding:.8rem 1.2rem}}
+
+/* Notfall Popup */
+.np-backdrop{display:none;position:fixed;inset:0;background:rgba(20,15,10,.55);z-index:120;
+  backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:1.5rem}
+@media (max-width:560px){.np-backdrop{padding:0;align-items:flex-end}}
+.np-backdrop.open{display:flex;animation:fade .25s ease-out}
+.np-modal{background:var(--paper);border-radius:var(--r-xl);max-width:560px;width:100%;
+  box-shadow:var(--shadow-lg);overflow:hidden;animation:rise .35s cubic-bezier(.2,.7,.3,1)}
+@media (max-width:560px){.np-modal{border-radius:var(--r-xl) var(--r-xl) 0 0;
+  animation:slideUpModal .35s cubic-bezier(.2,.7,.3,1)}}
+.np-head{background:linear-gradient(135deg,var(--bordeaux) 0%,var(--bordeaux-800) 100%);color:#fff;
+  padding:1.5rem 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.np-head h3{color:#fff;font-family:var(--serif);font-size:1.4rem}
+.np-head p{color:rgba(255,255,255,.85);margin:.2rem 0 0;font-size:.86rem}
+.np-close{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:50%;width:36px;height:36px;
+  cursor:pointer;display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
+.np-close:hover{background:rgba(255,255,255,.25)}
+.np-body{padding:1.8rem 1.6rem 2rem}
+@media (max-width:560px){.np-body{padding:1.3rem 1.2rem 1.6rem}}
+.np-number{font-family:var(--serif);font-size:clamp(1.8rem,5.5vw,2.5rem);text-align:center;color:var(--bordeaux);font-weight:600;letter-spacing:-.01em;margin-bottom:.4rem;line-height:1.1;word-break:break-all}
+.np-label{text-align:center;font-size:.86rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.np-call{display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:var(--bordeaux);color:#fff!important;text-decoration:none;
+  padding:1.1rem 1.2rem;border-radius:14px;font-weight:600;font-size:1.05rem;
+  box-shadow:0 8px 20px -8px rgba(172,29,60,.5);transition:all var(--tr)}
+.np-call:hover{background:var(--bordeaux-700);transform:translateY(-1px);text-decoration:none}
+.np-call svg{flex-shrink:0}
+.np-divider{display:flex;align-items:center;gap:.8rem;margin:1.6rem 0;color:var(--ink-3);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.np-divider::before,.np-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.np-qr-wrap{display:flex;justify-content:center;flex-direction:column;align-items:center;gap:.6rem}
+.np-qr{width:200px;height:200px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;
+  box-shadow:var(--shadow-sm)}
+.np-qr svg{width:100%;height:100%;display:block}
+.np-qr-hint{font-size:.84rem;color:var(--ink-3);text-align:center;max-width:300px;line-height:1.4}
+.np-mobile-only,.np-desktop-only{display:none}
+@media (max-width:780px){.np-mobile-only{display:block}}
+@media (min-width:781px){.np-desktop-only{display:block}}
+
+/* Auxiliary numbers section in popup */
+.np-aux{margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.np-aux-title{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:.7rem}
+.np-aux a{display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  padding:.7rem .9rem;background:var(--white);border:1px solid var(--line);border-radius:10px;
+  margin-bottom:.4rem;color:var(--ink);text-decoration:none;transition:all var(--tr)}
+.np-aux a:hover{border-color:var(--bordeaux);background:var(--bordeaux-50)}
+.np-aux a .lbl{font-size:.86rem;color:var(--ink-3)}
+.np-aux a .num{font-family:var(--serif);color:var(--bordeaux);font-weight:600;font-size:1rem}
+
+/* ============ MOBILE BOTTOM BAR ============ */
+.mob-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:55;
+  background:rgba(251,250,247,.96);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);padding:.5rem .8rem calc(.5rem + var(--safe-bottom));
+  justify-content:space-around;gap:.4rem}
+.mob-bar button,.mob-bar a{background:none;border:none;color:var(--ink-2);font:inherit;
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.4rem .5rem;
+  font-size:.7rem;cursor:pointer;border-radius:8px;text-decoration:none;flex:1}
+.mob-bar svg{width:22px;height:22px}
+.mob-bar .active{color:var(--bordeaux)}
+.mob-bar .mob-notfall{color:var(--bordeaux);font-weight:600}
+@media (max-width:780px){
+  .mob-bar{display:flex}
+  body{padding-bottom:64px}
+  .fab{bottom:calc(78px + var(--safe-bottom))}
+}
+
+/* ============ FOOTER ============ */
+footer.foot{margin-top:6rem;border-top:1px solid var(--line);padding:2.5rem 0 4rem;background:var(--paper-2)}
+@media (max-width:780px){footer.foot{padding:2rem 0 2.5rem;margin-top:3rem}}
+.foot-inner{width:var(--content);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+@media (max-width:780px){.foot-inner{grid-template-columns:1fr;gap:1.5rem}}
+.foot-inner h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.7rem;font-weight:600}
+.foot-inner p,.foot-inner li{font-size:.88rem;color:var(--ink-2);line-height:1.55}
+.foot-inner ul{list-style:none;padding:0;margin:0}
+.foot-inner ul li{margin:.4rem 0}
+.foot-bottom{width:var(--content);margin:2.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:.8rem;color:var(--ink-3)}
+.foot-bottom .ver{display:flex;align-items:center;gap:.5rem}
+.foot-bottom .ver .dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.logout-btn{background:none;border:1px solid var(--line);padding:.4rem .8rem;border-radius:999px;
+  font-size:.78rem;color:var(--ink-3);cursor:pointer;transition:all var(--tr)}
+.logout-btn:hover{border-color:var(--bordeaux);color:var(--bordeaux)}
+
+/* ============ PRINT ============ */
+@media print{
+  .top,.fab,.hamburger,.mobile-nav,.mob-bar,.np-backdrop,.modal-backdrop,.lp-overlay,.gate,.mobile-search-bar{display:none!important}
+  body{background:#fff;color:#000;padding-bottom:0}
+  .band{padding:1rem 0;break-inside:avoid}
+  details.qa[open] .qbody,details.qa .qbody{display:block}
+  details.qa summary .arrow{display:none}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-card">
+    <div class="gate-mark" aria-hidden="true">PL</div>
+    <div class="gate-eyebrow">Pädagogische Bereichsleitung</div>
+    <h1 id="gateTitle">Wissens-Hub<br>Tagesbetreuung.</h1>
+    <p class="lede">Single Source of Truth für unser Erzieher-Team. Bitte mit den internen Zugangsdaten anmelden.</p>
+    <form id="gateForm" autocomplete="off" novalidate>
+      <div class="gate-field">
+        <label for="gateUser">Benutzername</label>
+        <input id="gateUser" type="text" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+      </div>
+      <div class="gate-field">
+        <label for="gatePass">Passwort</label>
+        <input id="gatePass" type="password" autocomplete="current-password" required>
+      </div>
+      <div class="gate-error" id="gateError">Zugangsdaten unbekannt. Bitte erneut versuchen oder Bereichsleitung kontaktieren.</div>
+      <button type="submit" class="gate-btn">Anmelden</button>
+    </form>
+    <div class="gate-foot">
+      <div><span class="dot"></span>Vertraulich · intern</div>
+      <div>Fachklinik Prinzregent Luitpold</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MOBILE SEARCH BAR ============ -->
+<div class="mobile-search-bar" id="mobileSearchBar">
+  <label class="search" style="flex:1;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="searchInputMobile" type="search" placeholder="Suchen — ADHS, Atemübung, Eskalation…" autocomplete="off">
+  </label>
+  <button class="ms-close" onclick="closeMobileSearch()" aria-label="Schließen">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="top" role="banner" id="topBar">
+  <div class="top-inner">
+    <a href="#top" class="brand" aria-label="Startseite">
+      <div class="brand-mark" aria-hidden="true">PL</div>
+      <div class="brand-text"><strong>Wissens-Hub</strong>Tagesbetreuung · Erzieher</div>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#vision" class="nlink">Vision</a>
+      <a href="#onboarding" class="nlink">Onboarding</a>
+      <a href="#schulung" class="nlink">Schulung</a>
+      <a href="#wissen" class="nlink">Wissen</a>
+      <a href="#faq" class="nlink">FAQ</a>
+    </nav>
+    <div class="search-wrap">
+      <label class="search" aria-label="Suche">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="Suchen — ADHS, Atemübung, Eskalation…" autocomplete="off">
+        <span class="kbd">/</span>
+      </label>
+      <div class="search-results" id="searchResults" role="listbox"></div>
+    </div>
+    <button class="search-mobile-btn" id="searchMobileBtn" onclick="openMobileSearch()" aria-label="Suche">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <button class="btn-emergency" onclick="openNotfall()" aria-label="Notfall">
+      <span class="pulse" aria-hidden="true"></span><span class="lbl">Notfall</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#vision">Vision &amp; Mission<span class="arrow-mob">›</span></a>
+    <a href="#onboarding">Onboarding<span class="arrow-mob">›</span></a>
+    <a href="#schulung">Lernpfade<span class="arrow-mob">›</span></a>
+    <a href="#diagnosen">Diagnose-Karten<span class="arrow-mob">›</span></a>
+    <a href="#eskalation">Eskalation<span class="arrow-mob">›</span></a>
+    <a href="#schutz">Schutzkonzept<span class="arrow-mob">›</span></a>
+    <a href="#wissen">Wissensdatenbank<span class="arrow-mob">›</span></a>
+    <a href="#faq">Häufige Fragen<span class="arrow-mob">›</span></a>
+    <a href="#" onclick="openNotfall();return false;" class="ms-emergency">
+      <span class="pulse"></span> Notfall öffnen
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="eyebrow">Pädagogische Tagesbetreuung · Kinderreha 5–12 Jahre</div>
+    <h1 style="margin-top:1rem;">Sicher,<br>würdevoll,<br><span class="accent">wirksam.</span></h1>
+    <p class="lede">Der Wissens-Hub ist unsere <strong>Single Source of Truth</strong> — für neue und erfahrene Kolleginnen und Kollegen. Haltung, Methoden, Diagnose-Strategien, Eskalationsprotokolle und Antworten auf die Fragen, die im Alltag wirklich vorkommen.</p>
+    <div class="hero-quick">
+      <a href="#onboarding" class="chip"><span class="dot"></span> Erster Tag — was jetzt?</a>
+      <a href="#schulung" class="chip"><span class="dot"></span> Lernpfade</a>
+      <a href="#diagnosen" class="chip"><span class="dot"></span> Diagnose-Karten</a>
+      <a href="#eskalation" class="chip"><span class="dot"></span> Eskalation 5-Stufen</a>
+      <a href="#schutz" class="chip"><span class="dot"></span> Schutzkonzept</a>
+      <a href="#" class="chip" onclick="openNotfall();return false;"><span class="dot" style="background:var(--bordeaux);"></span> Notfall-Nummer</a>
+    </div>
+  </div>
+  <dl class="hero-meta">
+    <dt>Bereich</dt><dd>Pädagogik · Tagesgruppen mit Begleitperson</dd>
+    <dt>Träger</dt><dd>KJF Augsburg · katholisch</dd>
+    <dt>Standort</dt><dd>Scheidegg / Allgäu</dd>
+    <dt>Version</dt><dd>1.1 · Mai 2026</dd>
+    <dt>Status</dt><dd style="color:var(--ok);">● Aktuell · Review jährlich</dd>
+  </dl>
+</section>
+
+<!-- VISION / MISSION -->
+<section class="band scroll-mt" id="vision">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">01 · Wofür wir da sind</div>
+        <h2>Vision, Mission, Werte.</h2>
+      </div>
+      <p class="lede">Drei Sätze, die jede Kollegin und jeder Kollege im Schlaf können sollte. Daran richtet sich aus, wie wir mit Kindern, Eltern und einander umgehen.</p>
+    </div>
+    <div class="golden">
+      <article><div class="step">01</div><h3>Warum.</h3><p><em>Damit jedes Kind unser Haus mit einem stärkeren Bild von sich selbst verlässt, als es gekommen ist.</em></p></article>
+      <article><div class="step">02</div><h3>Wie.</h3><p>Verlässliche, würdevolle Beziehung. Trauma-informierte Haltung. Marte-Meo-Sprache. Sichere Strukturen. Christliche Wertebindung im Verhalten, nicht in Worten.</p></article>
+      <article><div class="step">03</div><h3>Was.</h3><p>Wir gestalten die pädagogische Tagesbetreuung in einer 4-Wochen-Reha mit medizinischem, psychologischem, therapeutischem und schulischem Team — als Bindeglied im Alltag.</p></article>
+    </div>
+    <div class="values">
+      <div class="value"><div class="vicon">†</div><h4>Würde</h4><div class="anchor">„Du bist wertvoll, so wie Du bist."</div>
+        <ul><li>Wir nennen jedes Kind beim Namen.</li><li>Wir kritisieren Verhalten, nie die Person.</li><li>Nie Spott, nie Beschämen — auch nicht im Scherz.</li></ul></div>
+      <div class="value"><div class="vicon">♥</div><h4>Nächstenliebe</h4><div class="anchor">„Ich bin für Dich da."</div>
+        <ul><li>Morgens jedes Kind persönlich begrüßen.</li><li>Auf das Kind achten, das leiser wird.</li><li>Sorgen ernst nehmen, auch kleine.</li></ul></div>
+      <div class="value"><div class="vicon">✦</div><h4>Sorgsamkeit</h4><div class="anchor">„Wir gehen sorgsam um."</div>
+        <ul><li>Mit Material, Räumen, Zeit, Natur.</li><li>Mit den eigenen Kräften — Selbstfürsorge zählt.</li><li>Mit Worten — sie wirken länger als wir denken.</li></ul></div>
+      <div class="value"><div class="vicon">↗</div><h4>Hoffnung</h4><div class="anchor">„Es geht weiter, und es kann gut werden."</div>
+        <ul><li>Wir kommunizieren ressourcen- und lösungsorientiert.</li><li>Schwierige Phasen vorübergehen lassen — sie definieren ein Kind nicht.</li></ul></div>
+    </div>
+    <div class="creed">
+      <div class="cross">☩</div>
+      <div><h3>Christliche Werteorientierung — wie wir sie leben.</h3>
+      <p>Wir sind ein katholischer Träger (KJF Augsburg). Religion ist eingeladen, nicht verordnet. Tischgebete, Klinikseelsorge und religiöse Bräuche sind selbstverständlich präsent — aber nie aufgedrängt. Kinder und Familien anderer oder keiner Religion sind mit derselben Würde willkommen. Unsere Werte werden über Verhalten sichtbar, nicht über Verkündigung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONBOARDING -->
+<section class="band alt scroll-mt" id="onboarding">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">02 · Dein Start bei uns</div>
+        <h2>Onboarding — 30 / 60 / 90 Tage.</h2>
+      </div>
+      <p class="lede">Vier Etappen mit klaren Ankern. Dein Buddy begleitet Dich die ersten 90 Tage. Diese Übersicht zeigt, was an welchem Punkt erwartet wird — die Detail-Inhalte findest Du in den Lernpfaden weiter unten.</p>
+    </div>
+    <div class="timeline">
+      <div class="tline-step"><div class="tline-num">Etappe 01</div><div class="tline-title">Erste Woche</div>
+        <p class="muted" style="font-size:.88rem;margin:0;">Ankommen, Orientierung, Sicherheit.</p>
+        <ul><li>Begrüßung Bereichsleitung, Hausführung, Team-Vorstellung.</li><li>Verhaltenskodex &amp; Selbstverpflichtung unterschreiben.</li><li>Erweitertes Führungszeugnis vorlegen.</li><li>Zugang Wissens-Hub, KIS, Dokumentation.</li><li>Buddy lernt mich kennen.</li></ul></div>
+      <div class="tline-step"><div class="tline-num">Etappe 02</div><div class="tline-title">30 Tage</div>
+        <p class="muted" style="font-size:.88rem;margin:0;">Pflichtschulungen, erste Selbständigkeit.</p>
+        <ul><li>Pflicht: Präventionsordnung absolviert.</li><li>Pflicht: Eskalations- &amp; Notfallprotokolle.</li><li>Diagnose-Module ADHS, Angst, Schulabsentismus.</li><li>Hospitation in allen Dienstphasen.</li><li>Erstes Reflexionsgespräch.</li></ul></div>
+      <div class="tline-step"><div class="tline-num">Etappe 03</div><div class="tline-title">60 Tage</div>
+        <p class="muted" style="font-size:.88rem;margin:0;">Methodische Sicherheit, Team-Beitrag.</p>
+        <ul><li>Marte-Meo-Grundlagen abgeschlossen.</li><li>Eigenständige Gruppenleitung in einfachen Settings.</li><li>Erste Fallbesprechung aktiv mitgestaltet.</li><li>Eigenes Feedback an Bereichsleitung.</li></ul></div>
+      <div class="tline-step"><div class="tline-num">Etappe 04</div><div class="tline-title">90 Tage</div>
+        <p class="muted" style="font-size:.88rem;margin:0;">Probezeit-Bilanz, Entwicklungsplan.</p>
+        <ul><li>Alle 7 Diagnose-Karten bearbeitet.</li><li>Eigenständige Dokumentation &amp; Übergabe.</li><li>Probezeit-Gespräch.</li><li>Entwicklungsplan für das erste Jahr.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHULUNG / LERNPFADE -->
+<section class="band scroll-mt" id="schulung">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">03 · Was Du lernen wirst</div>
+        <h2>Lernpfade.</h2>
+      </div>
+      <p class="lede">Sechs voll ausgebaute Lernpfade. Klick auf eine Karte öffnet den kompletten Pfad mit allen Modulen. Pflicht-Schulungen sind als <em>Pflicht</em> markiert und werden separat dokumentiert.</p>
+    </div>
+    <div class="paths" id="pathsGrid"></div>
+  </div>
+</section>
+
+<!-- DIAGNOSE -->
+<section class="band alt scroll-mt" id="diagnosen">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">04 · Im Alltag</div>
+        <h2>Diagnose-Karten.</h2>
+      </div>
+      <p class="lede">Sieben Karten nach demselben Schema: <em>Was Du siehst · Was es bedeuten kann · Was hilft · Was schadet</em>. Klick öffnet die Details.</p>
+    </div>
+    <div class="diag-grid" id="diagGrid"></div>
+  </div>
+</section>
+
+<!-- ESKALATION -->
+<section class="band scroll-mt" id="eskalation">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">05 · Wenn es eng wird</div>
+        <h2>Eskalations-Stufen.</h2>
+      </div>
+      <p class="lede">Fünf Stufen, fünf Handlungsmuster. Auswendig kennen — zumindest die ersten drei. Detaillierte Schulung im Lernpfad <a href="#" onclick="openPath('eskalation');return false;">Eskalation &amp; Deeskalation</a>.</p>
+    </div>
+    <div class="row r2">
+      <div>
+        <div class="kb-list">
+          <details class="qa" open><summary><span class="qtitle"><strong>Stufe 1 — Unruhe</strong></span><span class="arrow">▾</span></summary>
+            <div class="qbody"><p>Reizreduktion. Nähe anbieten. Marte-Meo-Benennen: Sieh hin, sag, was Du siehst.</p></div></details>
+          <details class="qa"><summary><span class="qtitle"><strong>Stufe 2 — Ausagieren beginnt</strong></span><span class="arrow">▾</span></summary>
+            <div class="qbody"><p>Ruhige Stimme. Körperhaltung tief. Eigene Atmung verlangsamen. Optionen anbieten (nicht Fragen): „Magst Du den Stuhl oder das Kissen?".</p></div></details>
+          <details class="qa"><summary><span class="qtitle"><strong>Stufe 3 — Krise</strong></span><span class="arrow">▾</span></summary>
+            <div class="qbody"><p>1:1-Begleitung. Andere Kinder aus der Situation nehmen. Eskalationsteam informieren. Bereichsleitung noch im Dienst informieren.</p></div></details>
+          <details class="qa"><summary><span class="qtitle"><strong>Stufe 4 — Gefährdung</strong></span><span class="arrow">▾</span></summary>
+            <div class="qbody"><p>Schutz aller Beteiligten geht vor Programm. Arzt vom Dienst rufen, ggf. Begleitperson holen. Niemals allein in einem Raum einschließen.</p></div></details>
+          <details class="qa"><summary><span class="qtitle"><strong>Stufe 5 — Nachsorge</strong></span><span class="arrow">▾</span></summary>
+            <div class="qbody"><p>Kind nicht allein lassen. Kein Wertungsgespräch in der Akutphase. Reflexion erst, wenn Ruhe eingekehrt ist (frühestens 30 Min). Vollständige Dokumentation.</p></div></details>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.5rem;">
+          <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:.6rem;">Was wir nie tun</h3>
+          <p class="muted" style="font-size:.92rem;margin:0;">Diese vier Punkte sind nicht verhandelbar.</p>
+          <ul style="margin-top:.8rem;padding-left:1.1rem;color:var(--ink-2);line-height:1.7;">
+            <li>Festhalten ohne <em>akute</em> Gefährdung.</li>
+            <li>Schreien, ironisieren, beschämen.</li>
+            <li>In der Akutphase Konsequenzen verhängen, Belohnungen entziehen, mit Eltern drohen.</li>
+            <li>Allein in einem Raum einschließen — niemals.</li>
+          </ul>
+          <div class="escalation" style="border-color:var(--bordeaux);margin-top:1.2rem;">
+            <h4 style="color:var(--bordeaux);">Im akuten Notfall</h4>
+            <ol>
+              <li><strong>Stufe 4+:</strong> Arzt vom Dienst sofort.</li>
+              <li><strong>Medizinisch:</strong> 112.</li>
+              <li><strong>Kindeswohlgefährdung:</strong> Präventionsbeauftragte am selben Tag.</li>
+            </ol>
+            <p style="margin-top:.8rem;"><a href="#" onclick="openNotfall();return false;" style="font-weight:600;">→ Notfall-Drawer öffnen</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHUTZ -->
+<section class="band alt scroll-mt" id="schutz">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">06 · Schutz von Kindern · Schutz von Dir</div>
+        <h2>Verhaltenskodex.</h2>
+      </div>
+      <p class="lede">Sechs verbindliche Regeln. Vertiefung im Lernpfad <a href="#" onclick="openPath('praevention');return false;">Präventionsordnung &amp; Schutzkonzept</a>.</p>
+    </div>
+    <div class="diag-grid">
+      <div class="diag-card"><h4>Keine 1:1-Räume.</h4><p>Keine 1:1-Situationen hinter geschlossenen, blickdichten Türen ohne Notwendigkeit und Dokumentation.</p></div>
+      <div class="diag-card"><h4>Kein privater Kontakt.</h4><p>Keine privaten Kontakte zu Kindern (Social Media, Telefon, Treffen) — während oder nach dem Aufenthalt.</p></div>
+      <div class="diag-card"><h4>Keine Geschenke.</h4><p>Keine Geschenke an einzelne Kinder, keine Bevorzugung. Keine Sonderrollen.</p></div>
+      <div class="diag-card"><h4>Körperkontakt achtsam.</h4><p>Pädagogisch indiziert, vom Kind angenommen, für alle sichtbar. Kein Kontakt im Intimbereich, kein „auf den Schoß".</p></div>
+      <div class="diag-card"><h4>Fotos nur dienstlich.</h4><p>Ausschließlich Dienstgeräte, ausschließlich mit Einwilligung, ausschließlich für dienstliche Zwecke.</p></div>
+      <div class="diag-card"><h4>Eigene Grenzen sagen.</h4><p>Eigene Erschöpfung, Überforderung oder Grenzüberschreitung wird offen angesprochen — kollegial oder bei Bereichsleitung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WISSENSDATENBANK -->
+<section class="band scroll-mt" id="wissen">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">07 · Vertieftes Wissen</div>
+        <h2>Wissensdatenbank.</h2>
+      </div>
+      <p class="lede">Kuratiere Artikel zu allen Themenfeldern unseres Alltags. Filterbar nach Kategorie, durchsuchbar über die Suche oben. Findest Du etwas nicht? Schreib der Bereichsleitung — wir nehmen es auf.</p>
+    </div>
+    <div class="kb-filters" id="kbFilters">
+      <span class="flabel">Filter</span>
+      <button class="tag on" data-cat="all">Alle</button>
+      <button class="tag" data-cat="alltag">Alltag</button>
+      <button class="tag" data-cat="beziehung">Beziehung</button>
+      <button class="tag" data-cat="diagnose">Diagnose</button>
+      <button class="tag" data-cat="eskalation">Eskalation</button>
+      <button class="tag" data-cat="schutz">Schutz &amp; Recht</button>
+      <button class="tag" data-cat="team">Team</button>
+      <button class="tag" data-cat="doku">Dokumentation</button>
+      <button class="tag" data-cat="selbst">Selbstfürsorge</button>
+      <button class="tag" data-cat="eltern">Eltern</button>
+      <button class="tag" data-cat="material">Material</button>
+    </div>
+    <div class="qa-count" id="kbCount"></div>
+    <div class="kb-articles" id="kbArticles"></div>
+    <div class="qa-empty hidden" id="kbEmpty">Kein Artikel passt zu diesem Filter.</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band alt scroll-mt" id="faq">
+  <div class="band-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">08 · Die meistgestellten Fragen</div>
+        <h2>Häufige Fragen.</h2>
+      </div>
+      <p class="lede">Die zwölf Fragen, die jede Erzieherin und jeder Erzieher beantworten können sollte. Mehr Fragen findest Du in der Wissensdatenbank oder über die Suche.</p>
+    </div>
+    <div class="kb-list" id="faqList"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ DIAGNOSE MODAL ============ -->
+<div class="modal-backdrop" id="diagModal" onclick="if(event.target===this)closeDiag()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="diagTitle">
+    <div class="modal-head"><h3 id="diagTitle">…</h3>
+      <button class="modal-close" onclick="closeDiag()" aria-label="Schließen">✕</button></div>
+    <div class="modal-body" id="diagBody"></div>
+  </div>
+</div>
+
+<!-- ============ WISSENSDATENBANK ARTIKEL MODAL ============ -->
+<div class="modal-backdrop" id="kbModal" onclick="if(event.target===this)closeKB()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="kbModalTitle">
+    <div class="modal-head"><h3 id="kbModalTitle">…</h3>
+      <button class="modal-close" onclick="closeKB()" aria-label="Schließen">✕</button></div>
+    <div class="modal-body" id="kbModalBody"></div>
+  </div>
+</div>
+
+<!-- ============ LERNPFAD FULL-PAGE OVERLAY ============ -->
+<div class="lp-overlay" id="lpOverlay" role="dialog" aria-modal="true" aria-labelledby="lpHeroTitle">
+  <div class="lp-top">
+    <div class="lp-top-inner">
+      <button class="lp-back" onclick="closePath()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Zurück</span>
+      </button>
+      <div class="lp-title" id="lpTitleTop">Lernpfad</div>
+    </div>
+  </div>
+  <div class="lp-content" id="lpContent"></div>
+</div>
+
+<!-- ============ NOTFALL POPUP ============ -->
+<button class="fab" onclick="openNotfall()" aria-label="Notfall öffnen">
+  <span class="pulse" aria-hidden="true"></span> Notfall
+</button>
+<div class="np-backdrop" id="npBackdrop" onclick="if(event.target===this)closeNotfall()">
+  <div class="np-modal" role="dialog" aria-modal="true" aria-labelledby="npTitle">
+    <div class="np-head">
+      <div>
+        <h3 id="npTitle">Notfall &amp; Bereitschaft</h3>
+        <p>24/7 erreichbar — sofortige Hilfe.</p>
+      </div>
+      <button class="np-close" onclick="closeNotfall()" aria-label="Schließen">✕</button>
+    </div>
+    <div class="np-body">
+      <div class="np-label">Zentrale Notfall-Nummer</div>
+      <div class="np-number">+49&nbsp;115&nbsp;1519&nbsp;53475</div>
+
+      <a class="np-call" href="tel:+49115151953475" id="npCallBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="npCallLabel">Jetzt anrufen</span>
+      </a>
+
+      <div class="np-desktop-only">
+        <div class="np-divider">oder mit dem Smartphone scannen</div>
+        <div class="np-qr-wrap">
+          <div class="np-qr" aria-hidden="true">
+            <!-- QR placeholder, replaced via JS for crispness -->
+            <svg id="npQR" viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/></svg>
+          </div>
+          <p class="np-qr-hint">QR mit der Kamera scannen — das Telefon öffnet automatisch den Anruf an die Notfallnummer.</p>
+        </div>
+      </div>
+
+      <div class="np-aux">
+        <div class="np-aux-title">Weitere Notfall-Kontakte</div>
+        <a href="tel:112"><span class="lbl">Medizinischer Notfall</span><span class="num">112</span></a>
+        <a href="tel:110"><span class="lbl">Polizei</span><span class="num">110</span></a>
+        <a href="tel:+49115151953475"><span class="lbl">Arzt vom Dienst (intern)</span><span class="num">→ wählen</span></a>
+        <a href="tel:+49115151953475"><span class="lbl">Präventionsbeauftragte</span><span class="num">→ wählen</span></a>
+        <a href="tel:+49115151953475"><span class="lbl">Bereichsleitung Pädagogik</span><span class="num">→ wählen</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MOBILE BOTTOM BAR ============ -->
+<div class="mob-bar" id="mobBar">
+  <a href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Start</span></a>
+  <button onclick="openMobileSearch()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Suche</span></button>
+  <a href="#schulung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Lernen</span></a>
+  <a href="#wissen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Wissen</span></a>
+  <button class="mob-notfall" onclick="openNotfall()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Notfall</span></button>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div><h4>Wissens-Hub</h4><p>Single Source of Truth für die pädagogische Tagesbetreuung in der Kinderreha. Verzahnt mit dem schriftlichen Konzept, gepflegt durch die Pädagogische Bereichsleitung. Auditierbar im Rahmen von QMS-Reha (BAR) und ISO 9001.</p></div>
+    <div><h4>Träger &amp; Klinik</h4><ul><li>Fachklinik Prinzregent Luitpold</li><li>Oberschwenden 1 · 88175 Scheidegg</li><li>Träger: KJF Augsburg (katholisch)</li><li>Tel. 08381 / 896-0</li></ul></div>
+    <div><h4>Verantwortung &amp; Pflege</h4><ul><li>Inhalt: Pädagogische Bereichsleitung</li><li>QM: QM-Beauftragte der Fachklinik</li><li>Review: jährlich oder anlassbezogen</li><li>Feedback &amp; neue Q&amp;A: an Bereichsleitung</li></ul></div>
+  </div>
+  <div class="foot-bottom">
+    <div class="ver"><span class="dot"></span>Version 1.1 · Stand Mai 2026 · Nächster Review: Mai 2027</div>
+    <div style="display:flex;align-items:center;gap:1rem;">Vertraulich · Nur für interne Verwendung
+    <button class="logout-btn" onclick="logout()">Abmelden</button></div>
+  </div>
+</footer>
+
+<script>
+/* ========================================================
+   QR-CODE PATH (pre-generated for tel:+49115151953475)
+   ======================================================== */
+const NOTFALL_TEL = "+49115151953475";
+const QR_PATH_D = "M2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM5,2H6V3H5zM6,2H7V3H6zM7,2H8V3H7zM8,2H9V3H8zM10,2H11V3H10zM12,2H13V3H12zM15,2H16V3H15zM17,2H18V3H17zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM23,2H24V3H23zM24,2H25V3H24zM25,2H26V3H25zM26,2H27V3H26zM2,3H3V4H2zM8,3H9V4H8zM13,3H14V4H13zM14,3H15V4H14zM20,3H21V4H20zM26,3H27V4H26zM2,4H3V5H2zM4,4H5V5H4zM5,4H6V5H5zM6,4H7V5H6zM8,4H9V5H8zM11,4H12V5H11zM12,4H13V5H12zM13,4H14V5H13zM16,4H17V5H16zM17,4H18V5H17zM20,4H21V5H20zM22,4H23V5H22zM23,4H24V5H23zM24,4H25V5H24zM26,4H27V5H26zM2,5H3V6H2zM4,5H5V6H4zM5,5H6V6H5zM6,5H7V6H6zM8,5H9V6H8zM10,5H11V6H10zM11,5H12V6H11zM12,5H13V6H12zM15,5H16V6H15zM17,5H18V6H17zM20,5H21V6H20zM22,5H23V6H22zM23,5H24V6H23zM24,5H25V6H24zM26,5H27V6H26zM2,6H3V7H2zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM11,6H12V7H11zM12,6H13V7H12zM15,6H16V7H15zM17,6H18V7H17zM20,6H21V7H20zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM26,6H27V7H26zM2,7H3V8H2zM8,7H9V8H8zM10,7H11V8H10zM11,7H12V8H11zM13,7H14V8H13zM14,7H15V8H14zM15,7H16V8H15zM18,7H19V8H18zM20,7H21V8H20zM26,7H27V8H26zM2,8H3V9H2zM3,8H4V9H3zM4,8H5V9H4zM5,8H6V9H5zM6,8H7V9H6zM7,8H8V9H7zM8,8H9V9H8zM10,8H11V9H10zM12,8H13V9H12zM14,8H15V9H14zM16,8H17V9H16zM18,8H19V9H18zM20,8H21V9H20zM21,8H22V9H21zM22,8H23V9H22zM23,8H24V9H23zM24,8H25V9H24zM25,8H26V9H25zM26,8H27V9H26zM10,9H11V10H10zM12,9H13V10H12zM16,9H17V10H16zM18,9H19V10H18zM2,10H3V11H2zM6,10H7V11H6zM8,10H9V11H8zM9,10H10V11H9zM10,10H11V11H10zM11,10H12V11H11zM13,10H14V11H13zM14,10H15V11H14zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM22,10H23V11H22zM23,10H24V11H23zM26,10H27V11H26zM5,11H6V12H5zM6,11H7V12H6zM10,11H11V12H10zM11,11H12V12H11zM12,11H13V12H12zM13,11H14V12H13zM16,11H17V12H16zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM22,11H23V12H22zM23,11H24V12H23zM24,11H25V12H24zM4,12H5V13H4zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM10,12H11V13H10zM14,12H15V13H14zM15,12H16V13H15zM16,12H17V13H16zM17,12H18V13H17zM21,12H22V13H21zM23,12H24V13H23zM24,12H25V13H24zM3,13H4V14H3zM4,13H5V14H4zM10,13H11V14H10zM12,13H13V14H12zM14,13H15V14H14zM15,13H16V14H15zM17,13H18V14H17zM23,13H24V14H23zM24,13H25V14H24zM2,14H3V15H2zM6,14H7V15H6zM8,14H9V15H8zM9,14H10V15H9zM10,14H11V15H10zM12,14H13V15H12zM13,14H14V15H13zM14,14H15V15H14zM15,14H16V15H15zM18,14H19V15H18zM20,14H21V15H20zM23,14H24V15H23zM24,14H25V15H24zM25,14H26V15H25zM26,14H27V15H26zM2,15H3V16H2zM3,15H4V16H3zM4,15H5V16H4zM5,15H6V16H5zM9,15H10V16H9zM10,15H11V16H10zM12,15H13V16H12zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM19,15H20V16H19zM21,15H22V16H21zM22,15H23V16H22zM24,15H25V16H24zM4,16H5V17H4zM6,16H7V17H6zM8,16H9V17H8zM11,16H12V17H11zM12,16H13V17H12zM17,16H18V17H17zM19,16H20V17H19zM21,16H22V17H21zM23,16H24V17H23zM4,17H5V18H4zM9,17H10V18H9zM14,17H15V18H14zM16,17H17V18H16zM17,17H18V18H17zM18,17H19V18H18zM23,17H24V18H23zM24,17H25V18H24zM25,17H26V18H25zM2,18H3V19H2zM3,18H4V19H3zM5,18H6V19H5zM6,18H7V19H6zM7,18H8V19H7zM8,18H9V19H8zM10,18H11V19H10zM11,18H12V19H11zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM17,18H18V19H17zM18,18H19V19H18zM19,18H20V19H19zM20,18H21V19H20zM21,18H22V19H21zM22,18H23V19H22zM24,18H25V19H24zM25,18H26V19H25zM26,18H27V19H26zM10,19H11V20H10zM12,19H13V20H12zM14,19H15V20H14zM17,19H18V20H17zM18,19H19V20H18zM22,19H23V20H22zM24,19H25V20H24zM25,19H26V20H25zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM5,20H6V21H5zM6,20H7V21H6zM7,20H8V21H7zM8,20H9V21H8zM10,20H11V21H10zM13,20H14V21H13zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM18,20H19V21H18zM20,20H21V21H20zM22,20H23V21H22zM2,21H3V22H2zM8,21H9V22H8zM11,21H12V22H11zM13,21H14V22H13zM15,21H16V22H15zM17,21H18V22H17zM18,21H19V22H18zM22,21H23V22H22zM23,21H24V22H23zM24,21H25V22H24zM26,21H27V22H26zM2,22H3V23H2zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM10,22H11V23H10zM11,22H12V23H11zM12,22H13V23H12zM14,22H15V23H14zM15,22H16V23H15zM18,22H19V23H18zM19,22H20V23H19zM20,22H21V23H20zM21,22H22V23H21zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM26,22H27V23H26zM2,23H3V24H2zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM8,23H9V24H8zM11,23H12V24H11zM12,23H13V24H12zM15,23H16V24H15zM16,23H17V24H16zM17,23H18V24H17zM20,23H21V24H20zM23,23H24V24H23zM25,23H26V24H25zM26,23H27V24H26zM2,24H3V25H2zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM8,24H9V25H8zM17,24H18V25H17zM18,24H19V25H18zM20,24H21V25H20zM23,24H24V25H23zM24,24H25V25H24zM25,24H26V25H25zM2,25H3V26H2zM8,25H9V26H8zM14,25H15V26H14zM16,25H17V26H16zM21,25H22V26H21zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM2,26H3V27H2zM3,26H4V27H3zM4,26H5V27H4zM5,26H6V27H5zM6,26H7V27H6zM7,26H8V27H7zM8,26H9V27H8zM10,26H11V27H10zM11,26H12V27H11zM12,26H13V27H12zM13,26H14V27H13zM15,26H16V27H15zM16,26H17V27H16zM19,26H20V27H19zM20,26H21V27H20zM21,26H22V27H21zM23,26H24V27H23zM24,26H25V27H24zM25,26H26V27H25zM26,26H27V27H26z";
+
+(function injectQR(){
+  const qr = document.getElementById("npQR");
+  if (!qr) return;
+  const path = document.createElementNS("http://www.w3.org/2000/svg","path");
+  path.setAttribute("d", QR_PATH_D);
+  path.setAttribute("fill", "#000");
+  qr.appendChild(path);
+})();
+
+/* ========================================================
+   LOGIN GATE
+   ======================================================== */
+const VALID_USER = "Betreuung";
+const VALID_PASS = "LiebeinAktion!2";
+const AUTH_KEY = "wh.auth.v2";
+
+function checkAuth(){
+  let authed = false;
+  try { authed = sessionStorage.getItem(AUTH_KEY)==="1"; } catch(_){}
+  if (authed){
+    document.getElementById("gate").style.display="none";
+    document.body.style.overflow="";
+  } else {
+    document.body.style.overflow="hidden";
+    setTimeout(()=>document.getElementById("gateUser")?.focus(),300);
+  }
+}
+function login(user,pass){
+  if (user.trim()===VALID_USER && pass===VALID_PASS){
+    try { sessionStorage.setItem(AUTH_KEY,"1"); } catch(_){}
+    const gate = document.getElementById("gate");
+    gate.style.transition="opacity .35s ease-out";
+    gate.style.opacity="0";
+    setTimeout(()=>{gate.style.display="none";document.body.style.overflow="";},350);
+    return true;
+  }
+  return false;
+}
+function logout(){
+  try { sessionStorage.removeItem(AUTH_KEY); } catch(_){}
+  location.reload();
+}
+document.getElementById("gateForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const u = document.getElementById("gateUser").value;
+  const p = document.getElementById("gatePass").value;
+  const err = document.getElementById("gateError");
+  if (!login(u,p)){
+    err.classList.add("show");
+    document.getElementById("gatePass").value="";
+    setTimeout(()=>err.classList.remove("show"),3000);
+  }
+});
+checkAuth();
+
+/* ========================================================
+   MOBILE NAV + SEARCH UI
+   ======================================================== */
+const ham = document.getElementById("hamburger");
+const mnav = document.getElementById("mobileNav");
+ham?.addEventListener("click",()=>{
+  const open = mnav.classList.toggle("open");
+  ham.setAttribute("aria-expanded",open);
+});
+mnav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  mnav.classList.remove("open"); ham.setAttribute("aria-expanded",false);
+}));
+function openMobileSearch(){
+  document.getElementById("mobileSearchBar").classList.add("open");
+  setTimeout(()=>document.getElementById("searchInputMobile").focus(),50);
+}
+function closeMobileSearch(){
+  document.getElementById("mobileSearchBar").classList.remove("open");
+  document.getElementById("searchInputMobile").value="";
+  document.getElementById("searchResults").classList.remove("show");
+}
+
+/* ========================================================
+   NOTFALL POPUP + KEYBOARD
+   ======================================================== */
+function openNotfall(){
+  // On mobile we prefer direct tel — but still show popup with big call button
+  document.getElementById("npBackdrop").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeNotfall(){
+  document.getElementById("npBackdrop").classList.remove("open");
+  document.body.style.overflow="";
+}
+document.addEventListener("keydown",e=>{
+  if (e.key==="Escape"){
+    closeNotfall(); closeDiag(); closeKB(); closePath();
+    document.getElementById("searchResults").classList.remove("show");
+  }
+  if (e.key==="/" && document.activeElement.tagName!=="INPUT" && document.activeElement.tagName!=="TEXTAREA"){
+    e.preventDefault();
+    if (window.innerWidth<=980) openMobileSearch();
+    else document.getElementById("searchInput")?.focus();
+  }
+});
+
+/* ========================================================
+   DIAGNOSE DATA + RENDERING
+   ======================================================== */
+const DIAG = [
+  {id:"adhs",title:"ADHS / ADS",lede:"Unruhe oder „verträumt nicht da“. Hohe Selbststeuerungs-Last.",
+   see:["Hohe motorische Unruhe, häufiges Aufstehen, dauerredet","Schusselig, vergisst Material, hört scheinbar nicht zu","Reagiert impulsiv, unterbricht","Ermüdet schnell bei monotonen Aufgaben"],
+   mean:["Selbststeuerung neurobiologisch erschwert","Reizfilter funktioniert anders","Hoher Selbstwertdruck unter der Oberfläche","Möglich: ADS ohne Hyperaktivität — wirkt verträumt"],
+   help:["Klare, kurze Ansagen, Blickkontakt, ein Schritt zur Zeit","Reize reduzieren: stiller Arbeitsplatz, Wackelkissen, Pause","Bewegungsanlässe einbauen — Botengänge, kurze Sprints","Erfolge sofort und konkret rückmelden"],
+   harm:["Mehrfach-Aufträge gleichzeitig","Vor der Gruppe bloßstellen","Eskalation an Bereichsleitung/Psychologie bei Gefährdung, anhaltender Verweigerung, Schlafproblemen über 3 Tage"]},
+  {id:"angst",title:"Angststörungen &amp; Schulangst",lede:"Körpersymptome vor Übergängen, Klammern, Vermeidung.",
+   see:["Übelkeit, Bauchweh, Kopfweh vor Übergängen","Klammern, will nicht allein bleiben","Stille, Rückzug, vermeidet Blickkontakt","Panikartige Reaktionen"],
+   mean:["Vermeidung ist Symptom, nicht Trotz","Körpersignale katastrophisierend interpretiert","Bindungssystem hyperaktiv — Nähe beruhigt","Mehrere Ursachen, nicht nur „Schule“"],
+   help:["Vorhersehbarkeit, Vorausschau: „In 10 Min holen wir Dich ab“","Atemübung (Box-Atmung), beruhigend mit-atmen","Klein anfangen, kleine Erfolge feiern","Symptome ernstnehmen, nicht dramatisieren"],
+   harm:["Druck, Ironie, „Stell Dich nicht so an“","Aus Angst freisprechen (alles vermeiden lassen)","Eskalation sofort bei Panikattacke, Dissoziation, Suizidäußerung"]},
+  {id:"absentismus",title:"Schulabsentismus",lede:"Verweigerung der Klinikschule, oft mit Körpersymptomen.",
+   see:["Verweigert Klinikschule, Hausaufgabenzeit","Beschwerden morgens, weichen zur Schulzeit","Versteckt sich, „verschläft“","Wut, Tränen, Panik bei Schulthemen"],
+   mean:["Angst, Überforderung, Mobbingerfahrung, Depression","Oft Kombination mit Bindungs- oder Familienthemen","Selten reine Faulheit — fast immer Schutzverhalten","Eltern haben oft eigene Schulängste"],
+   help:["Enge Absprache mit Klinikschule &amp; Psychologie","Kleine Einheiten, Anwesenheit vor Leistung","Tagesstruktur halten, auch bei Reduktion","Ressourcen sichtbar machen"],
+   harm:["Schulvermeidung bequem werden lassen (Tablet, Spielen)","Mit Eltern in Frontkonflikt gehen","Eskalation: Bereichsleitung &amp; Psychologie — immer Teamthema"]},
+  {id:"depression",title:"Depressive Episoden",lede:"Antriebsarm, reizbar, selbstabwertend.",
+   see:["Antriebsarmut, „keine Lust auf nichts“","Reizbarkeit, Tränen, Rückzug","Selbstabwertung („Ich bin doof / nichts wert“)","Schlaf- und Appetitveränderungen"],
+   mean:["Depression bei Kindern zeigt sich oft als Reizbarkeit","Suizidale Gedanken möglich — auch bei Grundschulkindern","Innere Leere oft als „Langeweile“ beschrieben","Komorbidität mit Angst &amp; ADHS häufig"],
+   help:["Verlässliche, geduldige Präsenz — auch im Schweigen","Kleine Aktivierungen, Tageslicht, Bewegung","Positives konkret spiegeln","Selbstwertstärkende Aufgaben"],
+   harm:["Aufmunternde Floskeln („Kopf hoch“)","Leistungsdruck oder Vergleiche","Eskalation: bei Selbstabwertung mit Gefährdung oder Suizidäußerung — sofort, schriftlich, Psychologie/Arzt"]},
+  {id:"somato",title:"Somatoforme Störungen",lede:"Körperliche Symptome ohne organische Ursache.",
+   see:["Wiederkehrende Schmerzen ohne Befund","Schwindel, Übelkeit, Atemnot situationsabhängig","Symptome verändern sich, „wandern“","Kind ist sicher, körperlich krank zu sein"],
+   mean:["Körperlicher Ausdruck psychischer Belastung","Schmerz ist real — Kind erfindet nichts","Aufmerksamkeit auf Symptome verstärkt sie","Familien oft erschöpft und verunsichert"],
+   help:["Symptom ernst nehmen, ohne zu zentrieren","Aktivität anbieten („Probieren wir mal die Schaukel?“)","Gespräche über Symptome zeitlich begrenzen","Erfolge trotz Symptom benennen"],
+   harm:["Symptom ausblenden / leugnen","Sonderrollen belohnen (Hängematte, eigenes Zimmer)","Eskalation an Arzt bei neuem / verändertem Beschwerdebild"]},
+  {id:"mutismus",title:"Selektiver Mutismus",lede:"Sprechhemmung in bestimmten Situationen.",
+   see:["Spricht in der Gruppe nicht, zu Hause schon","Nickt, zeigt, schreibt — auf Umwegen","Hohe Anspannung sichtbar im Körper","Oft komorbide Ängste"],
+   mean:["Keine Trotzreaktion, keine Sturheit","Sprechen mit Angst gekoppelt","Druck verstärkt das Schweigen","Spontansprechen ist Riesenfortschritt — vorsichtig würdigen"],
+   help:["Druckfrei begegnen, lächeln, dasein","Nonverbale Kommunikation akzeptieren","Schrittweise: Nicken → Flüstern → Wort → Satz","Eng mit Psychologie abstimmen"],
+   harm:["Direkte Fragen vor der Gruppe","Sprechen erzwingen oder groß belohnen","Eskalation bei Verschlechterung — Bereichsleitung &amp; Psychologie"]},
+  {id:"ass",title:"ASS-Verdacht",lede:"Andere Reizverarbeitung, Routinen, sensorische Empfindlichkeit.",
+   see:["Wenig spontaner Blickkontakt","Spezialinteressen, Routinen, sensorische Empfindlichkeit","Übergänge besonders schwer","Spricht „erwachsen“ oder ungewöhnlich"],
+   mean:["Reizverarbeitung anders — nicht falsch","Soziale Regeln müssen oft explizit gelernt werden","Veränderungen lösen Stress aus, nicht Bockigkeit","Diagnostik langwierig"],
+   help:["Klarheit, Struktur, Schriftlichkeit / Piktogramme","Reizarmen Rückzugsort anbieten","Übergänge ankündigen, Countdown nutzen","Spezialinteressen wertschätzen"],
+   harm:["Augenkontakt einfordern","Veränderungen ohne Vorwarnung","Eskalation bei deutlichen Anhaltspunkten, Selbstverletzung, sensorischer Überlastung"]}
+];
+
+const diagGrid = document.getElementById("diagGrid");
+diagGrid.innerHTML = DIAG.map(d=>`
+  <div class="diag-card" onclick="openDiag('${d.id}')" tabindex="0" role="button" aria-label="${d.title.replace(/&amp;/g,'&')}">
+    <h4>${d.title}</h4><p>${d.lede}</p>
+    <svg class="arrow-r" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </div>
+`).join("");
+diagGrid.querySelectorAll(".diag-card").forEach(c=>c.addEventListener("keydown",e=>{
+  if (e.key==="Enter"||e.key===" "){e.preventDefault();c.click();}
+}));
+
+function openDiag(id){
+  const d = DIAG.find(x=>x.id===id); if (!d) return;
+  document.getElementById("diagTitle").innerHTML = d.title;
+  document.getElementById("diagBody").innerHTML = `
+    <p class="muted" style="font-size:1rem;margin-bottom:1.5rem;">${d.lede}</p>
+    <div class="modal-grid">
+      <div class="mcol see"><h5>Was Du siehst</h5><ul>${d.see.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div class="mcol mean"><h5>Was es bedeuten kann</h5><ul>${d.mean.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div class="mcol help"><h5>Was hilft</h5><ul>${d.help.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      <div class="mcol harm"><h5>Was schadet / Wann eskalieren</h5><ul>${d.harm.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+    </div>`;
+  document.getElementById("diagModal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeDiag(){document.getElementById("diagModal").classList.remove("open");document.body.style.overflow="";}
+
+/* ========================================================
+   LERNPFADE — VOLLAUSGEBAUTE INHALTE
+   ======================================================== */
+const PATHS = [
+  {
+    id:"praevention", title:"Präventionsordnung &amp; Schutzkonzept",
+    badge:"Pflicht", badgeClass:"pflicht", duration:"ca. 6 Std.", deadline:"Pflicht · in den ersten 30 Tagen",
+    lede:"Die Grundlage unserer Arbeit als katholischer Träger. Diese Schulung ist Pflicht und wird namentlich dokumentiert.",
+    summary:"Bischofskonferenz, KJF, SGB VIII, Verhaltenskodex, Meldewege.",
+    teaser:["Präventionsordnung Bischofskonferenz","§ 8a &amp; § 72a SGB VIII","Verhaltenskodex — 10 Regeln","Meldeweg bei Verdacht","Rechte der Kinder","Fallbeispiele"],
+    modules:[
+      {n:"Modul 1",t:"Rechtlicher und kirchlicher Rahmen",body:`
+        <p>Wir arbeiten als pädagogische Mitarbeitende in einer Klinik, deren Träger die <strong>Katholische Jugendfürsorge der Diözese Augsburg (KJF)</strong> ist. Daraus ergeben sich gleichzeitig staatliche und kirchliche Verpflichtungen, denen wir uns alle unterstellen.</p>
+        <h3>Staatlich</h3>
+        <ul>
+          <li><strong>§ 8a SGB VIII</strong> — Schutzauftrag bei Kindeswohlgefährdung. Wir haben die Pflicht, einer Gefährdungseinschätzung mit einer insoweit erfahrenen Fachkraft (IsoFa) zuzuführen.</li>
+          <li><strong>§ 72a SGB VIII</strong> — Tätigkeitsausschluss einschlägig vorbestrafter Personen. Erweitertes Führungszeugnis ist Pflicht.</li>
+          <li><strong>Bundeskinderschutzgesetz</strong> — der Rahmen, in den sich § 8a einbettet.</li>
+          <li><strong>UN-Kinderrechtskonvention</strong>, insbesondere Art. 3 (Kindeswohl), 12 (Beteiligung), 19 (Schutz vor Gewalt).</li>
+        </ul>
+        <h3>Kirchlich</h3>
+        <ul>
+          <li><strong>Präventionsordnung der Deutschen Bischofskonferenz</strong> — verbindlich für alle katholischen Träger.</li>
+          <li>Diözesane Präventions- und Schutzordnung Augsburg.</li>
+          <li>Verhaltenskodex der KJF (Selbstverpflichtung bei Einstellung).</li>
+        </ul>
+        <div class="takeaway"><strong>Merksatz</strong>Wir sind <em>verpflichtet</em>, Hinweisen nachzugehen. Es ist nicht freiwillig, ob wir melden — die Frage ist nur, wie wir es <em>gut</em> tun.</div>`},
+      {n:"Modul 2",t:"Verhaltenskodex — die zehn Regeln",body:`
+        <p>Dies sind die zehn Verhaltensregeln für unsere Tagesbetreuung. Sie sind nicht verhandelbar.</p>
+        <ol>
+          <li><strong>Keine 1:1-Räume.</strong> Keine 1:1-Situationen hinter geschlossenen, blickdichten Türen ohne pädagogische Notwendigkeit und Dokumentation.</li>
+          <li><strong>Vier-Augen-Prinzip bei körpernahen Aktivitäten</strong> (Schwimmbad, Umkleide, Snoezelen, Toilettengang Kleinerer).</li>
+          <li><strong>Kein privater Kontakt.</strong> Keine privaten Telefonnummern, kein Social-Media-Kontakt, keine privaten Treffen — während und nach dem Aufenthalt.</li>
+          <li><strong>Keine Geschenke an Einzelne, keine Bevorzugung.</strong></li>
+          <li><strong>Achtsamer Körperkontakt.</strong> Pädagogisch indiziert, vom Kind angenommen, für andere sichtbar. Kein Kontakt im Intimbereich, kein „auf den Schoß", keine längeren frontalen Umarmungen.</li>
+          <li><strong>Fotos &amp; Videos nur dienstlich.</strong> Nur Dienstgeräte, nur mit schriftlicher Einwilligung, nur für dienstliche Zwecke. Niemals Toilette, Umkleide, Schlaf, Akutphase.</li>
+          <li><strong>Sprache schützt.</strong> Keine Beschämung, keine Ironie, keine sexualisierte Sprache.</li>
+          <li><strong>Geheimnisse haben Grenzen.</strong> Wir versprechen Kindern <em>keine</em> Vertraulichkeit, wenn Schutzhinweise zur Sprache kommen.</li>
+          <li><strong>Mein Kollege ist auch verantwortlich.</strong> Wir sprechen Beobachtungen kollegial an, ohne Konkurrenzdenken.</li>
+          <li><strong>Eigene Grenzen kommunizieren.</strong> Erschöpfung, Überforderung, Grenzüberschreitung wird offen angesprochen.</li>
+        </ol>
+        <div class="danger"><strong>Wichtig</strong>Verstöße werden <em>immer</em> gemeldet — auch bei „guter Absicht". Es geht nicht um Schuld, sondern um Schutz.</div>`},
+      {n:"Modul 3",t:"Risikoanalyse — wo sind die kritischen Momente?",body:`
+        <p>Eine institutionelle Risikoanalyse ist die Voraussetzung dafür, dass das Schutzkonzept lebt. Im stationären Reha-Setting für 5–12-Jährige sind das die typischen Risiko-Cluster:</p>
+        <div class="twocol">
+          <div><h4>Räumlich</h4><ul><li>Toiletten und Umkleiden</li><li>Lange Flure, abgelegene Räume</li><li>Treppenhäuser, Aufzüge</li><li>Außenbereiche ohne Sichtkontakt</li><li>Snoezelen, ruhige Räume</li></ul></div>
+          <div><h4>Zeitlich</h4><ul><li>Übergänge zwischen Räumen</li><li>Schichtwechsel / Übergabezeiten</li><li>Nacht- und Randzeiten</li><li>Mahlzeiten — hohe Reizdichte</li><li>Erste 48h nach Aufnahme</li></ul></div>
+          <div><h4>Situativ</h4><ul><li>Körpernahe Therapien</li><li>Erste-Hilfe-Maßnahmen</li><li>Trost bei großer Verzweiflung</li><li>Konflikt zwischen Kind und Begleitperson</li><li>Eigenes Erschöpft-Sein</li></ul></div>
+          <div><h4>Beziehungsspezifisch</h4><ul><li>Lieblings-Konstellation Mitarbeiter:in–Kind</li><li>Geheimnisse als „Bündnis"</li><li>Kind sucht Sonderrolle</li><li>Eltern delegieren elterliche Themen</li></ul></div>
+        </div>
+        <div class="takeaway"><strong>Übung</strong>Jährlich überarbeiten wir die Risikoanalyse im Team. Jede:r darf einen Punkt ergänzen, der aus dem eigenen Alltag aufgefallen ist.</div>`},
+      {n:"Modul 4",t:"Meldeweg bei Verdacht — fünf Schritte",body:`
+        <p>Wenn Dir etwas auffällt — sei es eine Schilderung des Kindes, eine Beobachtung oder ein Gefühl — folge diesen fünf Schritten:</p>
+        <ol>
+          <li><strong>Beobachtung sachlich notieren.</strong> Was, wo, wann, wer war dabei, Originaltöne. Keine Interpretation. Datum und Unterschrift.</li>
+          <li><strong>Keine eigene Befragung.</strong> Kein „Erzähl mir nochmal genau, was passiert ist". Aktives Zuhören ja, suggestive Fragen nein.</li>
+          <li><strong>Heute noch Bereichsleitung und Präventionsbeauftragte informieren.</strong> Schriftlich, oder mündlich plus E-Mail-Bestätigung.</li>
+          <li><strong>IsoFa-Beratung anstoßen.</strong> Die insoweit erfahrene Fachkraft (extern) berät zur Risikoeinschätzung gemäß § 8a SGB VIII.</li>
+          <li><strong>Risikoeinschätzung im Team und weitere Schritte.</strong> Nach Trägerverfahren. Eltern werden in der Regel informiert — Ausnahme: konkrete Verdachtslage gegen Begleitperson selbst.</li>
+        </ol>
+        <h3>Was Du dem Kind sagen darfst</h3>
+        <blockquote>„Was Du mir erzählt hast, ist wichtig. Ich nehme das ernst. Ich muss jetzt mit jemandem darüber sprechen, der uns hilft. Du hast nichts falsch gemacht."</blockquote>
+        <div class="danger"><strong>Niemals</strong>Vertraulichkeit zusichern. Geheimnisse versprechen. Auf eigene Faust ermitteln. Eltern „warnen", solange ein Verdacht in Bearbeitung ist.</div>`},
+      {n:"Modul 5",t:"Beteiligung und Beschwerderecht der Kinder",body:`
+        <p>Kinder haben ein Recht auf Beteiligung an Entscheidungen, die sie betreffen (UN-KRK Art. 12). Im stationären Setting ist das eine besondere Aufgabe — Kinder sollen wissen, an wen sie sich wenden können, wenn ihnen etwas wichtig ist oder etwas falsch läuft.</p>
+        <h3>Wie wir Beteiligung sichtbar machen</h3>
+        <ul>
+          <li>Kindgerechter Aushang „An wen kann ich mich wenden?" auf Augenhöhe in jeder Gruppe.</li>
+          <li>Vertrauenspersonen sind benannt, mit Foto und Vorname.</li>
+          <li>Beschwerdebox (papierbasiert, kindgerecht) — wöchentlich geleert, Antwort innerhalb einer Woche.</li>
+          <li>Klinikseelsorge als externe Vertrauensinstanz.</li>
+          <li>Morgendliche Befindlichkeitsrunde — auch eine Form von Stimme.</li>
+        </ul>
+        <h3>Beteiligungs-Anker im Alltag</h3>
+        <ul>
+          <li>Echte Wahlmöglichkeiten geben („Magst Du die Blau- oder die Grüngruppe?").</li>
+          <li>Bei Konflikten beide Seiten anhören, bevor entschieden wird.</li>
+          <li>Bei Regeln den Sinn erklären — Kinder dürfen widersprechen.</li>
+          <li>Feedback einholen am Ende der Reha: „Was hat Dir hier gut getan, was nicht?"</li>
+        </ul>`},
+      {n:"Modul 6",t:"Fallbeispiele zur Vertiefung",body:`
+        <p>Drei typische Situationen, die im Alltag vorkommen. Sprich sie mit Deinem Buddy oder in der Fallbesprechung durch.</p>
+        <h3>Fall A — Die Schilderung beim Zubettgehen</h3>
+        <p><em>Lena (8 Jahre) sagt beim Gute-Nacht-Sagen: „Manchmal kommt mein Vater nachts in mein Bett. Erzähl es bitte niemandem."</em></p>
+        <h4>Was tun?</h4>
+        <ol>
+          <li>Ruhig bleiben, nicht weiter befragen. „Lena, danke, dass Du mir das sagst."</li>
+          <li>Vertraulichkeit nicht zusagen. „Ich muss jetzt mit jemandem sprechen, der weiß, wie man Dir helfen kann. Das ist meine Aufgabe."</li>
+          <li>Nach dem Dienst sofort wörtlich dokumentieren — Originaltöne.</li>
+          <li>Heute noch Bereichsleitung und Präventionsbeauftragte.</li>
+        </ol>
+        <h3>Fall B — Der „Lieblings-Erzieher"</h3>
+        <p><em>Du merkst, dass Tom (10) ganz besonders an Dir hängt. Er sucht ständig Deine Nähe, möchte Dich umarmen, schenkt Dir gebastelte Bilder. Eine Kollegin macht eine Bemerkung darüber.</em></p>
+        <h4>Was tun?</h4>
+        <ol>
+          <li>Anerkennen, dass sich eine Bindung entwickelt. Keine Schuldgefühle, aber: Reflexion.</li>
+          <li>Bilder annehmen, aber für die Gruppe sichtbar machen — kein Privat-Schatz.</li>
+          <li>Körperkontakt freundlich begrenzen — Hand auf Schulter, nicht Umarmung.</li>
+          <li>In der nächsten Supervision aktiv ansprechen.</li>
+        </ol>
+        <h3>Fall C — Der unsichere Kollege</h3>
+        <p><em>Du beobachtest, wie ein Kollege ein Kind länger und enger umarmt, als Du es für angemessen hältst. Du bist unsicher — vielleicht hast Du etwas missverstanden.</em></p>
+        <h4>Was tun?</h4>
+        <ol>
+          <li>Beobachtung notieren — sachlich, ohne Interpretation.</li>
+          <li>Den Kollegen <em>kollegial</em> ansprechen. „Mir ist heute aufgefallen, dass …"</li>
+          <li>Wenn sich nichts ändert oder Du Dich unwohl fühlst: Bereichsleitung informieren.</li>
+          <li>Im Zweifel: Präventionsbeauftragte — sie behandelt Meldungen vertraulich.</li>
+        </ol>
+        <div class="takeaway"><strong>Goldstandard</strong>Lieber einmal zu viel ansprechen als einmal zu wenig. Falsche Alarme richten kaum Schaden an — verschwiegene Verdachtsmomente sehr wohl.</div>`}
+    ]
+  },
+  {
+    id:"eskalation", title:"Eskalation &amp; Deeskalation",
+    badge:"Pflicht", badgeClass:"pflicht", duration:"ca. 4 Std.", deadline:"Pflicht · in den ersten 30 Tagen",
+    lede:"Vom 5-Stufen-Modell zur Nachsorge. Sicher, würdevoll und nachweisbar handeln.",
+    summary:"Neurobiologie, Stufenmodell, Co-Regulation, Time-In, Nachbesprechung.",
+    teaser:["Neurobiologie der Erregung","5-Stufen-Modell","Co-Regulation in der Praxis","Time-In statt Time-Out","Nachbesprechung &amp; Doku"],
+    modules:[
+      {n:"Modul 1",t:"Neurobiologie der Erregung — was im Kind passiert",body:`
+        <p>Wenn ein Kind in eine Krise rutscht, schaltet das Gehirn auf <em>Überleben</em> um. Der präfrontale Cortex — zuständig für Planen, Sprache, Impulskontrolle — geht offline. Übrig bleibt das limbische System mit Amygdala („Kampf, Flucht, Erstarren") und der Hirnstamm. Mit diesem Wissen ändert sich, wie wir handeln.</p>
+        <div class="twocol">
+          <div><h4>Was nicht funktioniert</h4><ul><li>Argumentieren („Sei doch vernünftig.")</li><li>Konsequenzen androhen</li><li>Sätze über drei Wörter</li><li>Komplexe Wahlmöglichkeiten</li><li>Eigene Erregung sichtbar machen</li></ul></div>
+          <div><h4>Was funktioniert</h4><ul><li>Co-Regulation über Körper und Stimme</li><li>Vorhersehbarkeit, kurze Sätze</li><li>Reize reduzieren (Licht, Lärm, Publikum)</li><li>Eigene Atmung verlangsamen — das Kind „spiegelt"</li><li>Anwesenheit, nicht Belehrung</li></ul></div>
+        </div>
+        <div class="takeaway"><strong>Merksatz</strong>Ein Kind in Stufe 4 hört Dich nicht. Es <em>fühlt</em> Dich.</div>`},
+      {n:"Modul 2",t:"Das 5-Stufen-Modell",body:`
+        <h3>Stufe 1 — Unruhe</h3>
+        <p>Zappeln, kurze verbale Spitzen, Material wird ungeduldig benutzt. Auf dieser Stufe genügt oft eine kleine Intervention.</p>
+        <ul><li>Reize reduzieren — Licht, Lautstärke, Personen.</li><li>Nähe anbieten — sich hinsetzen, kurzer Kontakt.</li><li>Marte-Meo-Benennen: „Du siehst gerade …".</li></ul>
+        <h3>Stufe 2 — Ausagieren beginnt</h3>
+        <p>Lautstärke, Provokation, körperliche Anspannung. Kind testet — und hofft, dass jemand hält.</p>
+        <ul><li>Stimme tief und ruhig. Sätze kurz. Körper unterhalb der Augenhöhe.</li><li>Optionen anbieten, nicht Fragen: „Magst Du den Stuhl oder das Kissen?".</li><li>Andere Kinder dezent informieren („Wir machen kurz Pause.").</li></ul>
+        <h3>Stufe 3 — Krise</h3>
+        <p>Verbale Aggression, körperliche Bewegungen, Tränen. Selbstkontrolle weitgehend weg.</p>
+        <ul><li>1:1-Begleitung. Andere Kinder aus der Situation nehmen — räumlich trennen.</li><li>Eskalationsteam informieren (Kollege:in, Bereichsleitung).</li><li>Keine Diskussion. „Ich bin da. Du bist sicher."</li></ul>
+        <h3>Stufe 4 — Gefährdung</h3>
+        <p>Selbst- oder Fremdgefährdung. Schutz aller Beteiligten geht vor Programm.</p>
+        <ul><li>Sicheren Abstand schaffen. Andere Kinder weg.</li><li>Arzt vom Dienst, ggf. Begleitperson holen.</li><li>Körperliche Intervention <em>nur</em> bei akuter Gefährdung, <em>nur</em> in geschulter Technik, <em>nur</em> so kurz wie möglich.</li><li>Niemals: in einem Raum einschließen.</li></ul>
+        <h3>Stufe 5 — Nachsorge</h3>
+        <p>Wenn die Erregung sinkt, beginnt eine andere Phase. Das Kind ist erschöpft, oft beschämt, manchmal reumütig — manchmal noch sehr labil.</p>
+        <ul><li>Kind nicht allein lassen. Keine Wertung in der Akutphase.</li><li>Stilles Beisammensein, Wasser anbieten.</li><li>Klärungsgespräch frühestens nach 30 Minuten — wenn Ruhe eingekehrt ist.</li><li>Vollständige Dokumentation noch im Dienst.</li></ul>`},
+      {n:"Modul 3",t:"Co-Regulation in der Praxis",body:`
+        <p>Co-Regulation ist die wichtigste pädagogische Fähigkeit überhaupt. Sie heißt: <em>Ich leihe Dir meine Ruhe, bis Du sie selbst wieder findest.</em></p>
+        <h3>Sechs konkrete Techniken</h3>
+        <ol>
+          <li><strong>Atmen.</strong> Verlangsame deine Atmung sichtbar. Dauer-Aus-Atmung verlängern. Kinder spiegeln das oft nach 30–60 Sekunden.</li>
+          <li><strong>Körper tief.</strong> Hin-Hocken auf Augenhöhe oder darunter. Niemals von oben.</li>
+          <li><strong>Stimme sinkt, wird leiser.</strong> Eine ruhige, tiefere Stimme wirkt biologisch beruhigend.</li>
+          <li><strong>Mantra-Sätze.</strong> Vier Worte, in Schleife: „Ich bin da. Du bist sicher." Nicht erklären, nicht diskutieren.</li>
+          <li><strong>Rhythmus.</strong> Wenn das Kind es zulässt: rhythmischer Klopfer auf den Oberarm. Rhythmus reguliert.</li>
+          <li><strong>Augen schließen erlauben.</strong> Manche Kinder regulieren über Reizabschottung.</li>
+        </ol>`},
+      {n:"Modul 4",t:"Time-In statt Time-Out",body:`
+        <p>Time-Out — das alleinige Wegschicken in einen Raum — verstärkt bei traumatisch belasteten Kindern die Erregung. Wir machen das nicht. Stattdessen Time-In: das Kind bleibt <em>mit uns</em>, aber in einem reizärmeren, ruhigeren Bereich.</p>
+        <h3>Wie wir einen Time-In gestalten</h3>
+        <ul>
+          <li>Eine ruhige Ecke, eingerichtet mit weichem Sitzkissen, sensorischem Material, Sanduhr.</li>
+          <li>Eine Begleitperson bleibt anwesend — schweigend oder leise präsent.</li>
+          <li>Keine Aufgabe, keine Konsequenz, keine Bedingung.</li>
+          <li>Das Kind entscheidet, wann es zurück in die Gruppe will — wir bieten an, nicht wir verfügen.</li>
+        </ul>
+        <div class="danger"><strong>Verbot</strong>Niemals ein Kind in einem Raum allein einschließen, niemals ohne Sichtkontakt lassen, niemals als Strafe verhängen.</div>`},
+      {n:"Modul 5",t:"Nachbesprechung &amp; Dokumentation",body:`
+        <p>Nach jeder Eskalation ab Stufe 3 gibt es eine pflichtgemäße Nachsorge — für das Kind, für uns selbst und für das Team.</p>
+        <h3>Mit dem Kind (am selben Tag oder Folgetag)</h3>
+        <ul>
+          <li>Wertfrei rekapitulieren: „Was hast Du gemerkt, bevor es laut wurde?"</li>
+          <li>Strategien für nächstes Mal gemeinsam suchen — niedrigschwellig, mit Symbolen.</li>
+          <li>Beziehung reparieren: „Du bist mir wichtig. Auch nach diesem Tag."</li>
+        </ul>
+        <h3>Mit dem Team</h3>
+        <ul>
+          <li>Übergabe schriftlich und mündlich an Folgedienst.</li>
+          <li>Bei Stufe 3+: Bereichsleitung am selben Tag.</li>
+          <li>Bei Stufe 4 oder körperlicher Intervention: Vorfallsbericht innerhalb 24 Stunden.</li>
+        </ul>
+        <h3>Mit Dir selbst</h3>
+        <ul>
+          <li>Kollegiale Beratung, kurze Pause, ggf. Supervisionsanfrage.</li>
+          <li>Erkenne eigene Erregung an — sekundäre Traumatisierung beginnt unauffällig.</li>
+        </ul>`}
+    ]
+  }
+];
+
+PATHS.push(
+  {
+    id:"martemeo", title:"Marte Meo — Grundlagen",
+    badge:"Empfohlen", badgeClass:"", duration:"ca. 8 Std.", deadline:"Empfohlen bis Tag 60",
+    lede:"Die methodische Leitlinie unseres Hauses. Nach Maria Aarts — international evaluiert, im Alltag einsetzbar.",
+    summary:"Aarts, 6 Basis-Elemente, Initiativen, Triangulieren, Anwendung.",
+    teaser:["Geschichte &amp; Evidenz","Die 6 Basis-Elemente","Initiativen wahrnehmen","Benennen — Sprache als Werkzeug","Triangulieren in der Gruppe","Anwendung im Alltag","Video-Reflexion"],
+    modules:[
+      {n:"Modul 1",t:"Was ist Marte Meo — Geschichte und Evidenz",body:`
+        <p>Marte Meo bedeutet sinngemäß „aus eigener Kraft" und wurde in den 1970er Jahren von der niederländischen Pädagogin <strong>Maria Aarts</strong> entwickelt. Die Methode arbeitet mit kurzen Video-Sequenzen aus dem Alltag und analysiert <em>gelingende Momente</em>, um daraus konkrete Entwicklungsschritte abzuleiten.</p>
+        <p>Heute ist Marte Meo international in der Frühförderung, Heilpädagogik, Familienberatung, Pflege und Kinder- und Jugendpsychiatrie etabliert. Mehrere kontrollierte Studien belegen positive Effekte auf Bindungsqualität, Selbstregulation und elterliche Sensitivität.</p>
+        <h3>Was Marte Meo <em>nicht</em> ist</h3>
+        <ul><li>Kein Defizit-Diagnoseverfahren.</li><li>Keine reine Videotechnik.</li><li>Kein Ersatz für Therapie.</li><li>Keine kurzlebige Methode — wer es ernst meint, lernt jahrelang.</li></ul>
+        <h3>Was Marte Meo <em>ist</em></h3>
+        <ul><li>Eine Haltung der Ressourcenorientierung.</li><li>Eine Sprache der Beziehungsgestaltung.</li><li>Ein Set sehr konkreter Mikrohandlungen.</li><li>Eine Methode, gelingende Momente als Lernanker zu nutzen.</li></ul>`},
+      {n:"Modul 2",t:"Die sechs Basis-Elemente nach Aarts",body:`
+        <p>Sechs aufeinander aufbauende Bewegungen, die jede Interaktion tragen. Wer sie kennt, hat ein Werkzeug für fast jede pädagogische Situation.</p>
+        <h3>1. Initiativen wahrnehmen</h3>
+        <p>Wir halten kurz inne und beobachten: Worauf richtet sich die Aufmerksamkeit des Kindes gerade? Was tut es, wo schaut es hin, was sagt es nonverbal?</p>
+        <h3>2. Initiativen bestätigen</h3>
+        <p>Wir geben dem Kind ein Zeichen, dass wir es wahrgenommen haben — Blickkontakt, Nicken, ein „Hm". Eine Mikrohandlung, ein riesiger Beziehungs-Effekt.</p>
+        <h3>3. Benennen — sich selbst und das Kind</h3>
+        <p>Wir sprechen aus, was wir tun („Ich räume gerade die Stifte ein.") und was das Kind tut („Du baust einen Turm aus den blauen Steinen."). So bekommt das Kind Sprache für seine Welt.</p>
+        <h3>4. Bestätigen und ergänzen</h3>
+        <p>Wir bauen auf der Initiative des Kindes auf, statt sie zu ersetzen. Aus „Schau, ein Käfer." wird nicht „Komm jetzt zum Essen.", sondern „Ja, ein schwarzer Käfer. Er läuft langsam."</p>
+        <h3>5. Triangulieren</h3>
+        <p>Wir verbinden Kinder miteinander: „Lukas, schau, was Mara gerade gebaut hat. Mara, möchtest Du Lukas zeigen, wie das geht?".</p>
+        <h3>6. Anfang, Mitte und Ende markieren</h3>
+        <p>Jede Aktion bekommt einen Rahmen: Anfang ansagen, mittendrin orientieren, Schluss würdigen. Übergänge werden so weniger stressig.</p>
+        <div class="takeaway"><strong>Faustregel</strong>Drei Sekunden warten, dann benennen. Diese drei Sekunden sind die wichtigste Übung.</div>`},
+      {n:"Modul 3",t:"Initiativen wahrnehmen — die Mikro-Übung",body:`
+        <p>Diese Übung kannst Du heute beginnen. Sie kostet nichts und braucht kein Material.</p>
+        <h3>Tagesübung</h3>
+        <ol>
+          <li>Suche Dir ein einzelnes Kind in der Gruppe — eines, mit dem Du heute besonders aufmerksam sein willst.</li>
+          <li>Verbringe dreimal am Tag 60 Sekunden in seiner Nähe, ohne zu reden.</li>
+          <li>Beobachte: Worauf richtet sich gerade seine Aufmerksamkeit? Was tut sein Körper?</li>
+          <li>Reagiere mit einer minimalen Bestätigung — Blick, Nicken, kurzes Lächeln.</li>
+          <li>Notiere abends: Welche Initiative hatte das Kind heute am häufigsten?</li>
+        </ol>
+        <p>Nach einer Woche dieser Übung berichten Teams regelmäßig, dass sie das Kind <em>anders</em> kennen.</p>`},
+      {n:"Modul 4",t:"Benennen — Sprache als Werkzeug",body:`
+        <p>Wir benennen, statt zu kommentieren oder zu bewerten. Drei Beispiele:</p>
+        <div class="twocol">
+          <div><h4>Statt Bewertung</h4><ul><li>„Toll gemacht!"</li><li>„Sei doch nicht so wild."</li><li>„Du hörst nie zu."</li></ul></div>
+          <div><h4>Benennen</h4><ul><li>„Du hast die Schnur diesmal ganz allein durchgefädelt."</li><li>„Du läufst gerade richtig schnell."</li><li>„Du schaust gerade aus dem Fenster, während ich rede."</li></ul></div>
+        </div>
+        <h3>Warum?</h3>
+        <p>Bewertung ist <em>außen</em> verankert — Lob, Tadel, Vergleich. Benennen ist <em>innen</em> verankert — das Kind erkennt sich selbst. Kinder mit instabilem Selbstwert profitieren enorm vom Benennen.</p>`},
+      {n:"Modul 5",t:"Triangulieren in der Gruppe",body:`
+        <p>Im Gruppenalltag arbeiten wir nicht nur mit einzelnen Kindern, sondern <em>verbinden</em> Kinder. Das nennt Aarts „triangulieren".</p>
+        <h3>Triangulieren in drei Schritten</h3>
+        <ol>
+          <li>Initiative eines Kindes wahrnehmen.</li>
+          <li>Sie sichtbar machen: „Schau, Tom probiert gerade etwas mit den Magneten."</li>
+          <li>Verbindung herstellen: „Lena, möchtest Du sehen, wie er das macht?".</li>
+        </ol>
+        <p>So lernt jedes Kind: <em>Ich bin in dieser Gruppe interessant. Andere können von mir lernen.</em> Das stärkt Selbstwert und Zugehörigkeit gleichzeitig.</p>`},
+      {n:"Modul 6",t:"Anfang, Mitte, Ende — Übergänge gestalten",body:`
+        <p>Übergänge sind die kritischsten Momente des Tages — für jedes Kind, besonders für die mit Diagnosen. Marte Meo gibt uns eine klare Routine:</p>
+        <h3>Anfang</h3>
+        <ul><li>„Wir fangen jetzt mit dem Aufräumen an. In fünf Minuten gehen wir zum Mittagessen."</li><li>Visuelle Karte zeigen, wenn das Kind das braucht.</li></ul>
+        <h3>Mitte</h3>
+        <ul><li>„Ich sehe, Du legst gerade die letzten Steine zurück. Gleich sind wir fertig."</li><li>Bestätigen, dass etwas im Gange ist, ohne zu hetzen.</li></ul>
+        <h3>Ende</h3>
+        <ul><li>„Wir sind fertig mit Aufräumen. Schau, alle Stifte sind in der Box."</li><li>Würdigen, was passiert ist, bevor das Nächste beginnt.</li></ul>`},
+      {n:"Modul 7",t:"Anwendung im Klinikalltag",body:`
+        <p>Wo wir Marte Meo besonders bewusst einsetzen:</p>
+        <ul>
+          <li><strong>Morgenkreis</strong> — Initiativen sehen, einzelne Kinder kurz benennen.</li>
+          <li><strong>Materialausgabe</strong> — bestätigen, was jedes Kind wählt.</li>
+          <li><strong>Konflikte</strong> — Wahrnehmen vor Werten. Beide Seiten benennen.</li>
+          <li><strong>Abschied vor Therapie</strong> — Ende markieren, Übergang strukturieren.</li>
+          <li><strong>Abendessen</strong> — Triangulieren über den Tag.</li>
+        </ul>
+        <div class="takeaway"><strong>Minimum für den Alltag</strong>Atme einmal. Sieh hin. Sag, was Du siehst. Markiere Anfang und Ende.</div>`},
+      {n:"Modul 8",t:"Video-Reflexion — wie es bei uns läuft",body:`
+        <p>Ein- bis zweimal jährlich findet im Bereich eine externe Marte-Meo-Video-Reflexion statt. Das funktioniert so:</p>
+        <ol>
+          <li>Mit Einverständnis der Erziehungsberechtigten und des Kindes wird eine kurze (5–10 Min.) Alltagsszene aufgezeichnet.</li>
+          <li>Ein zertifizierter Marte-Meo-Supervisor analysiert die gelungenen Momente.</li>
+          <li>In einer kollegialen Sitzung schauen wir uns 30–90 Sekunden gemeinsam an.</li>
+          <li>Wir leiten gemeinsam Entwicklungsschritte ab — für das Kind <em>und</em> für unsere eigene Beziehungsgestaltung.</li>
+        </ol>
+        <h3>Datenschutz</h3>
+        <ul><li>Aufnahme nur auf Dienstgerät, verschlüsselt.</li><li>Nur Bereichsleitung + Supervisor + Beteiligte sehen das Material.</li><li>Nach Reflexion: Löschung, dokumentiert.</li></ul>`}
+    ]
+  },
+  {
+    id:"trauma", title:"Trauma-informierte Pädagogik",
+    badge:"Empfohlen", badgeClass:"", duration:"ca. 5 Std.", deadline:"Empfohlen bis Tag 60",
+    lede:"„Was ist Dir passiert?“ statt „Was stimmt nicht mit Dir?“. Eine Haltung, die alles verändert.",
+    summary:"Stressreaktion, Polyvagal, Trigger, Co-Regulation, Reizgestaltung.",
+    teaser:["Was ist Trauma?","Polyvagal kompakt","Die zentrale Haltungsfrage","Trigger erkennen","Reize gestalten"],
+    modules:[
+      {n:"Modul 1",t:"Was ist Trauma — und was nicht",body:`
+        <p>Trauma ist <em>nicht</em> das Ereignis selbst. Trauma ist das, was im Inneren eines Menschen passiert, wenn ein Ereignis seine Bewältigungsfähigkeit überfordert hat. Das gleiche Ereignis kann für ein Kind traumatisierend sein, für ein anderes nicht.</p>
+        <h3>Was Trauma bei Kindern bewirkt</h3>
+        <ul>
+          <li>Veränderte Stressreaktion (Hyperarousal oder Hypoarousal).</li>
+          <li>Schlafstörungen, Albträume, Flashbacks.</li>
+          <li>Bindungsverhalten verändert sich — entweder klammernd oder vermeidend.</li>
+          <li>Selbstwert leidet — „Mit mir stimmt etwas nicht."</li>
+          <li>Komorbidität: Angst, Depression, ADHS-ähnliche Symptome.</li>
+        </ul>
+        <h3>Trauma-Typen, denen wir begegnen</h3>
+        <ul>
+          <li>Einzelereignis (Unfall, schwere Krankheit, Verlust).</li>
+          <li>Komplextrauma (anhaltende Belastung, z. B. Vernachlässigung, häusliche Gewalt).</li>
+          <li>Bindungstrauma (Beziehungsabbrüche, instabile Bezugspersonen).</li>
+          <li>Medizinische Traumata (Krankenhausaufenthalte, schmerzhafte Behandlungen).</li>
+        </ul>`},
+      {n:"Modul 2",t:"Polyvagal-Theorie kompakt",body:`
+        <p>Die Polyvagal-Theorie (Stephen Porges) beschreibt drei Zustände unseres autonomen Nervensystems, in denen wir uns je nach Sicherheitserleben aufhalten:</p>
+        <h3>1. Ventraler Vagus — „sicher und verbunden"</h3>
+        <p>Wir sind im sozialen Engagement. Wir können zuhören, lernen, in Beziehung sein.</p>
+        <h3>2. Sympathikus — „Kampf oder Flucht"</h3>
+        <p>Aktivierung steigt. Herzfrequenz und Atmung beschleunigen sich. Kinder werden laut, motorisch unruhig, aggressiv oder fliehen aus der Situation.</p>
+        <h3>3. Dorsaler Vagus — „Erstarren"</h3>
+        <p>Wenn Kampf/Flucht nicht funktionieren, schaltet das System auf Erstarren um. Kinder werden still, dissoziieren, wirken „nicht da". Vorsicht: leise Kinder sind nicht automatisch entspannte Kinder.</p>
+        <div class="takeaway"><strong>Für die Praxis</strong>Wir können ein Kind nicht „zum Lernen zwingen", wenn es im Sympathikus oder dorsalen Vagus ist. Wir müssen es erst zurückführen — über Sicherheit, Beziehung, Co-Regulation.</div>`},
+      {n:"Modul 3",t:"„Was ist Dir passiert?“ — die Haltungsfrage",body:`
+        <p>Die zentrale Haltungsverschiebung der trauma-informierten Pädagogik ist denkbar einfach und wirkt tief:</p>
+        <blockquote>Nicht: Was stimmt nicht mit Dir? — Sondern: Was ist Dir passiert?</blockquote>
+        <p>Diese Frage muss nicht laut gestellt werden. Sie verändert unsere innere Haltung, mit der wir auf herausforderndes Verhalten schauen. Statt Diagnose oder Strafe suchen wir die Geschichte, die hinter dem Verhalten steht.</p>
+        <h3>Konkret im Alltag</h3>
+        <ul>
+          <li>Wenn ein Kind „bockig" wird: Was hat es <em>vorher</em> wahrgenommen?</li>
+          <li>Wenn ein Kind aus dem Raum rennt: Was hat es <em>geschützt</em>?</li>
+          <li>Wenn ein Kind nicht spricht: Welche Erfahrung hat es <em>gemacht</em>, dass Schweigen sicherer ist?</li>
+        </ul>`},
+      {n:"Modul 4",t:"Trigger erkennen und gestalten",body:`
+        <p>Trigger sind sensorische, soziale oder situative Hinweise, die das Nervensystem in die Stressreaktion versetzen — meist unbewusst. Bei uns häufig:</p>
+        <ul>
+          <li><strong>Reizüberflutung</strong> (Lärm, helles Licht, viele Menschen, schnelle Bewegungen).</li>
+          <li><strong>Unvorhersehbarkeit</strong> — überraschende Übergänge.</li>
+          <li><strong>Beschämungsmomente</strong> — vor der Gruppe kritisiert werden.</li>
+          <li><strong>Körperliche Nähe ohne Einladung</strong>.</li>
+          <li><strong>Bestimmte Worte</strong> (Schrei-Worte, Drohungen, Spott).</li>
+          <li><strong>Geruchsreize</strong> (Krankenhaus, Desinfektionsmittel, bestimmte Speisen).</li>
+        </ul>
+        <h3>Was wir tun</h3>
+        <ul>
+          <li>Trigger im Übergabegespräch namentlich vermerken („Tom: laute Stimmen, plötzlicher Lichtwechsel").</li>
+          <li>Reize aktiv gestalten — Licht dimmen, Lautstärke kontrollieren, vorhersehbare Routinen.</li>
+          <li>Reizarme Rückzugsorte zugänglich machen.</li>
+        </ul>`},
+      {n:"Modul 5",t:"Co-Regulation als Werkzeug",body:`
+        <p>Wir haben es im Eskalationspfad schon gesehen — hier vertiefen wir es speziell für trauma-belastete Kinder. Co-Regulation ist <em>die</em> wichtigste Reaktion auf Trauma-Triggering.</p>
+        <h3>Die vier Säulen</h3>
+        <ol>
+          <li><strong>Sichtbar ruhig sein.</strong> Atmen, Schultern senken, weicher Blick.</li>
+          <li><strong>Vorhersehbar sein.</strong> Ankündigen, was passiert, bevor es passiert.</li>
+          <li><strong>Beziehung anbieten, ohne sie aufzudrängen.</strong> Da sein, nicht überfallen.</li>
+          <li><strong>Ressourcen aktivieren.</strong> An Stärken erinnern, an gelungene Momente.</li>
+        </ol>
+        <div class="takeaway"><strong>Merksatz</strong>Ein traumatisiertes Kind lernt durch <em>wiederholte gute Erfahrung</em> Sicherheit. Jeder ruhige, würdevolle Moment ist ein Baustein. Es gibt keinen Sofort-Reset — aber jeder Tag mit uns zählt.</div>`}
+    ]
+  },
+  {
+    id:"selbst", title:"Selbstfürsorge &amp; Sekundärtraumatisierung",
+    badge:"Optional", badgeClass:"", duration:"ca. 3 Std.", deadline:"Optional · jährliche Auffrischung",
+    lede:"Wer Kinder hält, muss selbst gehalten werden. Erkenne früh, was sich anbahnt — handle, bevor es chronisch wird.",
+    summary:"Warnzeichen, Schutzfaktoren, Supervision, Anlaufstellen.",
+    teaser:["Was ist Sekundärtraumatisierung?","Warnzeichen früh erkennen","Schutzfaktoren","Supervision nutzen","Anlaufstellen"],
+    modules:[
+      {n:"Modul 1",t:"Was ist Sekundärtraumatisierung?",body:`
+        <p>Auch <em>compassion fatigue</em> oder <em>secondary traumatic stress</em> genannt. Beschreibt eine Belastungsreaktion bei Menschen, die regelmäßig mit Trauma-Geschichten anderer in Kontakt sind — z. B. uns Erzieher:innen in einem Reha-Setting mit psychisch belasteten Kindern.</p>
+        <p>Sekundärtraumatisierung ist <em>keine</em> Schwäche und <em>kein</em> Versagen. Sie ist eine erwartbare Berufsbelastung — wie ein Rücken-Problem bei Pflegepersonal.</p>
+        <h3>Was sie unterscheidet von Burnout</h3>
+        <div class="twocol">
+          <div><h4>Burnout</h4><ul><li>Erschöpfung durch Arbeitsmenge</li><li>Gefühl von Sinnverlust</li><li>Distanzierung</li></ul></div>
+          <div><h4>Sekundärtrauma</h4><ul><li>Belastung durch Trauma-Inhalte</li><li>Aufdrängende Erinnerungen, Albträume</li><li>Veränderte Weltsicht</li></ul></div>
+        </div>`},
+      {n:"Modul 2",t:"Warnzeichen — bei Dir selbst und Kolleg:innen",body:`
+        <ul>
+          <li>Schlafstörungen, Albträume — besonders mit Bezug zu Klinik-Geschichten.</li>
+          <li>Kreisende Gedanken um einzelne Kinder im Privaten.</li>
+          <li>Reizbarkeit, Zynismus, Abstumpfung.</li>
+          <li>Vermeidung bestimmter Kinder, Themen oder Situationen.</li>
+          <li>Gefühl, „nicht abschalten" zu können.</li>
+          <li>Körperliche Symptome: Spannungskopfschmerz, Magen-Probleme, Erschöpfung.</li>
+          <li>Sozialer Rückzug, weniger Privatleben.</li>
+          <li>Veränderte Weltsicht — alles erscheint dunkler, gefährlicher.</li>
+        </ul>
+        <div class="takeaway"><strong>Wann handeln</strong>Wenn drei oder mehr Punkte länger als zwei Wochen anhalten: Bereichsleitung ansprechen, Mitarbeiterberatung in Anspruch nehmen.</div>`},
+      {n:"Modul 3",t:"Schutzfaktoren — was wirkt nachweislich",body:`
+        <h3>Im Beruf</h3>
+        <ul>
+          <li>Klar getrennte Pausen — physisch raus aus der Gruppe.</li>
+          <li>Übergaben als Entlastungs-Ritual nutzen.</li>
+          <li>Eigenes Handy in der Tasche lassen — Präsenz beidseitig.</li>
+          <li>Supervision regelmäßig wahrnehmen.</li>
+        </ul>
+        <h3>Privat</h3>
+        <ul>
+          <li>Übergangsritual nach dem Dienst (Kleiderwechsel, Spaziergang, Musik).</li>
+          <li>Bewegung, Schlaf, Tageslicht — nicht verhandelbar.</li>
+          <li>Soziale Kontakte außerhalb des Berufsfeldes.</li>
+          <li>Hobbys, die nichts mit Kindern zu tun haben.</li>
+        </ul>
+        <h3>Innere Haltung</h3>
+        <ul>
+          <li>„Ich bin nicht für jedes Kindes Heilung verantwortlich."</li>
+          <li>„Ich habe einen Anteil. Das genügt."</li>
+          <li>„Meine Erschöpfung ist Information, nicht Versagen."</li>
+        </ul>`},
+      {n:"Modul 4",t:"Supervision und kollegiale Beratung nutzen",body:`
+        <p>Im Bereich Pädagogik gibt es drei Räume, die wir für Reflexion und Entlastung haben:</p>
+        <ol>
+          <li><strong>Externe Supervision</strong> — monatlich, verpflichtend. Externe Supervisorin, Schweigepflicht, Fokus auf Fall- und Beziehungsthemen.</li>
+          <li><strong>Kollegiale Fallbesprechung</strong> — wöchentlich im Team. Schwerpunkt: einzelne Kinder, methodische Fragen.</li>
+          <li><strong>Anlassbezogene Supervision</strong> — nach belastenden Vorfällen (Eskalation Stufe 4+, Abgängigkeit, Tod oder schwere Krankheit eines Kindes).</li>
+        </ol>
+        <h3>Was Du in Supervision tun darfst</h3>
+        <ul><li>Eigene Belastung benennen, ohne sie zu rechtfertigen.</li><li>Schwierige Fälle einbringen, ohne sie „lösen" zu müssen.</li><li>Konflikte im Team thematisieren.</li><li>Schweigen — Supervision ist nicht Pflicht-zu-Reden.</li></ul>`},
+      {n:"Modul 5",t:"Anlaufstellen — wo Du Hilfe findest",body:`
+        <ul>
+          <li><strong>Bereichsleitung Pädagogik</strong> — erster Ansprechpartner, jederzeit.</li>
+          <li><strong>Mitarbeitervertretung (MAV)</strong> — vertrauliche Anlaufstelle.</li>
+          <li><strong>Mitarbeiterberatung / EAP</strong> — externe psychologische Beratung des Trägers, kostenlos, vertraulich.</li>
+          <li><strong>Klinikseelsorge</strong> — auch für Mitarbeitende offen, unabhängig von Konfession.</li>
+          <li><strong>Hausärztliche Versorgung</strong> — bei körperlichen Symptomen.</li>
+          <li><strong>Psychotherapeutische Sprechstunden</strong> — Hotline der KV Bayern: 116117.</li>
+        </ul>
+        <div class="takeaway"><strong>Faustregel</strong>Wenn Du Dich fragst, ob Du Hilfe brauchst, ist die Antwort meistens: ja, hol Dir Beratung. Frühe Schritte sind die kleinsten.</div>`}
+    ]
+  }
+);
+
+// Add the special "Diagnose-Module" path (links to diagnose section)
+PATHS.push({
+  id:"diagnose", title:"Diagnose-Module",
+  badge:"Modulreihe", badgeClass:"modul", duration:"je 30 Min.", deadline:"Im 1. Quartal",
+  lede:"Sieben fokussierte Karten zu den häufigsten Indikationen unserer Tagesbetreuung. Jede Karte folgt demselben Schema.",
+  summary:"ADHS, Angst, Schulabsentismus, Depression, Somatoform, Mutismus, ASS.",
+  teaser:["ADHS / ADS","Angststörungen &amp; Schulangst","Schulabsentismus","Depressive Episoden","Somatoforme Störungen","Selektiver Mutismus","Autismus-Spektrum"],
+  modules: DIAG.map((d,i)=>({
+    n:`Karte ${i+1}`, t:d.title.replace(/&amp;/g,'&'),
+    body:`
+      <p class="muted" style="font-size:1.02rem;margin-bottom:1.2rem;">${d.lede}</p>
+      <div class="twocol">
+        <div><h4>Was Du siehst</h4><ul>${d.see.map(x=>'<li>'+x+'</li>').join('')}</ul></div>
+        <div><h4>Was es bedeuten kann</h4><ul>${d.mean.map(x=>'<li>'+x+'</li>').join('')}</ul></div>
+        <div><h4>Was hilft</h4><ul>${d.help.map(x=>'<li>'+x+'</li>').join('')}</ul></div>
+        <div><h4>Was schadet / Wann eskalieren</h4><ul>${d.harm.map(x=>'<li>'+x+'</li>').join('')}</ul></div>
+      </div>`
+  }))
+});
+
+/* Render path cards */
+const pathsGrid = document.getElementById("pathsGrid");
+pathsGrid.innerHTML = PATHS.map(p=>`
+  <div class="path" onclick="openPath('${p.id}')" tabindex="0" role="button" aria-label="Lernpfad öffnen: ${p.title.replace(/&amp;/g,'&').replace(/"/g,'&quot;')}">
+    <div class="path-head">
+      <span class="badge ${p.badgeClass}">${p.badge}</span>
+      <h3>${p.title}</h3>
+      <p>${p.summary}</p>
+    </div>
+    <div class="path-body">
+      <ol>${p.teaser.map(t=>'<li>'+t+'</li>').join('')}</ol>
+    </div>
+    <div class="path-foot">
+      <span class="duration">${p.duration}</span>
+      <span class="open">Jetzt öffnen →</span>
+    </div>
+  </div>
+`).join("");
+pathsGrid.querySelectorAll(".path").forEach(c=>c.addEventListener("keydown",e=>{
+  if (e.key==="Enter"||e.key===" "){e.preventDefault();c.click();}
+}));
+
+/* Open / Close path overlay */
+function openPath(id){
+  const p = PATHS.find(x=>x.id===id); if (!p) return;
+  document.getElementById("lpTitleTop").innerHTML = p.title;
+  const toc = p.modules.map((m,i)=>`<a href="#lpm-${i}" data-idx="${i}">${m.n} · ${m.t}</a>`).join("");
+  const body = p.modules.map((m,i)=>`
+    <div class="lp-module" id="lpm-${i}">
+      <div class="m-num">${m.n}</div>
+      <h2>${m.t}</h2>
+      ${m.body}
+    </div>`).join("");
+  document.getElementById("lpContent").innerHTML = `
+    <div class="lp-hero">
+      <div class="lp-meta"><span class="badge ${p.badgeClass}">${p.badge}</span><span>${p.duration}</span><span>·</span><span>${p.deadline}</span></div>
+      <h1 id="lpHeroTitle">${p.title}</h1>
+      <p class="lp-lede">${p.lede}</p>
+    </div>
+    <div class="lp-body">
+      <nav class="lp-toc" aria-label="Modulübersicht">
+        <div class="lp-toc-title">Module</div>
+        ${toc}
+      </nav>
+      <div class="lp-modules">${body}</div>
+    </div>`;
+  document.getElementById("lpOverlay").classList.add("open");
+  document.body.style.overflow="hidden";
+  document.getElementById("lpContent").scrollTop = 0;
+  history.replaceState({path:id},"","#path/"+id);
+}
+function closePath(){
+  document.getElementById("lpOverlay").classList.remove("open");
+  document.body.style.overflow="";
+  if (location.hash.startsWith("#path/")) history.replaceState({},"","#schulung");
+}
+window.addEventListener("popstate",()=>{
+  if (location.hash.startsWith("#path/")){
+    const id = location.hash.slice(6);
+    if (PATHS.find(p=>p.id===id)) openPath(id);
+  } else {
+    document.getElementById("lpOverlay").classList.remove("open");
+    document.body.style.overflow="";
+  }
+});
+// Open path on initial hash
+if (location.hash.startsWith("#path/")){
+  const id = location.hash.slice(6);
+  setTimeout(()=>openPath(id),100);
+}
+
+/* ========================================================
+   WISSENSDATENBANK ARTIKEL
+   ======================================================== */
+const KB = [
+  {cat:"alltag",catLabel:"Alltag",title:"Der erste Morgen — Aufnahmetag",tags:["onboarding-kind","alltag","übergang"],
+   summary:"Wie Du den ersten Klinik-Tag eines Kindes sicher und warm gestaltest.",
+   body:`<p>Der erste Morgen entscheidet viel über die kommenden vier Wochen. Kinder kommen oft mit Erschöpfung von der Anreise, Unsicherheit und ambivalenten Gefühlen. Unsere Aufgabe: Sicherheit zeigen, ohne zu überwältigen.</p>
+     <h3>Vor dem Treffen</h3>
+     <ul><li>Akte kurz prüfen: Diagnose, Trigger, Allergien, Begleitperson.</li><li>Gruppenraum reizarm vorbereiten — kein Chaos, kein lautes Licht.</li><li>Buddy-Kind im Vorfeld informieren („Heute kommt ein Neuer, magst Du es ihm zeigen?").</li></ul>
+     <h3>Begrüßung</h3>
+     <ul><li>Auf Augenhöhe, mit Vornamen, freundlich, aber nicht überschwänglich.</li><li>Begleitperson kurz einbeziehen: „Schön, dass Sie da sind."</li><li>Erst die Räume zeigen, dann die anderen Kinder.</li></ul>
+     <h3>Erster Tag — Programm</h3>
+     <ul><li>„Jetzt — Gleich — Später" laut benennen.</li><li>Bei Aktivitäten zuschauen erlaubt, mitmachen optional.</li><li>Mittagessen früh besprechen: Sitzplatz, Allergien, Religion.</li><li>Übergabe an Mittagsdienst mit Hinweis „Neu, erster Tag".</li></ul>
+     <p class="muted">→ Vertiefung im Lernpfad <a href="#" onclick="closeKB();openPath('martemeo');return false;">Marte Meo</a>.</p>`},
+  {cat:"alltag",catLabel:"Alltag",title:"Tagesstruktur und Übergänge",tags:["alltag","übergang","struktur"],
+   summary:"Warum sichtbare Tagesstruktur das stärkste pädagogische Werkzeug ist.",
+   body:`<p>Kinder mit psychischen oder psychosomatischen Diagnosen profitieren in extremem Maße von <em>vorhersehbarer Struktur</em>. Die Struktur ist nicht Selbstzweck, sondern Sicherheit.</p>
+     <h3>Drei Bausteine</h3>
+     <ol><li><strong>Visualisierter Tagesplan</strong> — Piktogramme, Magnete, Augenhöhe.</li><li><strong>Übergangs-Routinen</strong> — Ankündigung 5 / 3 / 1 Min vor Wechsel.</li><li><strong>Markierte Anfänge und Enden</strong> — Anfangs- und Schluss-Ritual.</li></ol>
+     <h3>Was wir bei jedem Übergang tun</h3>
+     <ul><li>Ankündigen mit Zeitangabe.</li><li>Visuelle Karte zeigen.</li><li>Marte-Meo-Benennen: „Wir räumen jetzt auf. In zwei Minuten ist Mittag."</li><li>Letzten Schritt bewusst markieren: „Fertig. Wir gehen."</li></ul>`},
+  {cat:"alltag",catLabel:"Alltag",title:"Mahlzeiten gestalten",tags:["alltag","essen","reize"],
+   summary:"Mahlzeiten sind reizdicht und konfliktanfällig. Wie Du sie ruhig hältst.",
+   body:`<p>Drei Mahlzeiten pro Tag, plus zwei Zwischenmahlzeiten. Bei 12+ Kindern in einer Gruppe ein hochkomplexer Moment.</p>
+     <h3>Vor der Mahlzeit</h3>
+     <ul><li>Hände waschen als Ritual, nicht als Hetze.</li><li>Tischgebet anbieten — Kinder dürfen, müssen nicht (siehe Werteorientierung).</li><li>Sitzplätze vorhersehbar, Reizüberflutung minimieren.</li></ul>
+     <h3>Während der Mahlzeit</h3>
+     <ul><li>Erzieher sitzen mit, essen mit. Keine Aufsichts-Distanz.</li><li>Bei Konflikt: ruhig benennen, nicht laut greifen.</li><li>Bei Essstörungs-Indikation: Verhaltensplan einhalten — niemals Druck.</li><li>Allergien und religiöse Speisegebote im Blick.</li></ul>
+     <h3>Nach der Mahlzeit</h3>
+     <ul><li>Geschirr-Routine — Kind räumt eigenes Geschirr ab.</li><li>Klares Ende: „Wir sind fertig. Jetzt geht es weiter mit …"</li></ul>`},
+  {cat:"alltag",catLabel:"Alltag",title:"Mittagsruhe und Schlafphasen",tags:["alltag","schlaf","ruhe"],
+   summary:"Ruhephase richtig anbieten, ohne zu erzwingen.",
+   body:`<p>Mittagsruhe ist <em>Angebot</em>, nicht Pflicht. Kinder, die nicht schlafen, dürfen ruhig liegen oder leise lesen. Erzwungener Schlaf hat den umgekehrten Effekt.</p>
+     <h3>Was wir tun</h3>
+     <ul><li>Licht dämpfen, Lautstärke reduzieren, Vorhänge.</li><li>Kuscheltier / Übergangsobjekt erlaubt.</li><li>Erzieher:in sichtbar präsent — nicht im Nebenraum verschwinden.</li><li>Ende sanft einleiten: leise Musik, sanftes Licht.</li></ul>
+     <h3>Was wir nicht tun</h3>
+     <ul><li>Mit Konsequenzen drohen, wenn ein Kind nicht schläft.</li><li>Mit Tablets oder Handys „beschäftigen".</li></ul>`},
+  {cat:"alltag",catLabel:"Alltag",title:"Konflikte unter Kindern",tags:["alltag","konflikt","gruppendynamik"],
+   summary:"Was tun, wenn zwei Kinder aneinanderraten?",
+   body:`<p>Konflikte unter Kindern sind nicht zu vermeiden — und sind wertvoll, wenn sie gut moderiert werden.</p>
+     <h3>Dein 4-Schritt-Plan</h3>
+     <ol><li><strong>Sicherheit herstellen.</strong> Räumlich trennen, wenn es körperlich wird.</li><li><strong>Beide Seiten anhören.</strong> Niemand wird zum Sieger erklärt, bevor beide gesprochen haben.</li><li><strong>Spiegeln statt urteilen.</strong> „Du sagst, er hat Dir den Stift weggenommen. Du sagst, er war zuerst da."</li><li><strong>Gemeinsam nach Lösung suchen.</strong> Frage: „Was würde Euch beiden helfen?".</li></ol>
+     <p>Wenn die Kinder zu erregt sind: Time-In, später Klärung.</p>`},
+  {cat:"alltag",catLabel:"Alltag",title:"Klinikschule — Übergabe und Begleitung",tags:["alltag","schule"],
+   summary:"Reibungsfreier Übergang in und aus der Klinikschule.",
+   body:`<p>Die Klinikschule ist eine eigenständige Berufsgruppe — wir sind Vor- und Nachbereiter, nicht Lehrkräfte.</p>
+     <h3>Vor der Schule</h3>
+     <ul><li>Material vollständig (Mäppchen, Klinikschulheft).</li><li>Frühstück getrunken, Toilette.</li><li>Übergang ankündigen — kein Hast.</li></ul>
+     <h3>Während der Schule</h3>
+     <ul><li>Wir sind nicht anwesend, außer bei besonderem Bedarf (z. B. Eingewöhnung).</li><li>Kommunikation läuft über Klinikschule und Psychologie, nicht über Eltern.</li></ul>
+     <h3>Nach der Schule</h3>
+     <ul><li>Befindlichkeit kurz erfragen — ohne Verhör.</li><li>Übergaben der Lehrkräfte ernst nehmen.</li><li>Schulische Probleme zeitnah an Psychologie weitergeben.</li></ul>`},
+  {cat:"beziehung",catLabel:"Beziehung",title:"Erstkontakt — die ersten 30 Sekunden",tags:["beziehung","onboarding-kind"],
+   summary:"Wie Du in einer halben Minute Sicherheit aufbaust.",
+   body:`<p>Kinder bewerten Erwachsene biologisch in den ersten Sekunden — sicher oder unsicher. Diese Bewertung ist nicht bewusst und schwer rückgängig zu machen. Wir achten besonders auf diese Mikrohandlungen:</p>
+     <ul>
+       <li><strong>Augenhöhe.</strong> Hinhocken, bevor wir reden.</li>
+       <li><strong>Weicher Blick.</strong> Nicht starr, nicht prüfend.</li>
+       <li><strong>Ruhiger Atem.</strong> Eigene Spannung senken, bevor wir das Kind treffen.</li>
+       <li><strong>Vorname.</strong> Erste Worte enthalten den Vornamen des Kindes.</li>
+       <li><strong>Distanz respektieren.</strong> Keine Umarmungen, keine Berührung — solange nicht eingeladen.</li>
+       <li><strong>Kurze Sätze.</strong> Nicht erklären, nur willkommen heißen.</li>
+     </ul>`},
+  {cat:"beziehung",catLabel:"Beziehung",title:"Marte-Meo-Quickstart",tags:["beziehung","martemeo","alltag"],
+   summary:"Die drei Minimalschritte, die jeden Tag funktionieren.",
+   body:`<ol>
+       <li><strong>Atme einmal kurz</strong>, bevor Du reagierst.</li>
+       <li><strong>Sieh hin, dann sag etwas.</strong> Initiative wahrnehmen, bestätigen.</li>
+       <li><strong>Markiere Anfang und Ende</strong> jeder Aktivität deutlich.</li>
+     </ol>
+     <p>Mehr im <a href="#" onclick="closeKB();openPath('martemeo');return false;">vollen Lernpfad Marte Meo</a>.</p>`},
+  {cat:"beziehung",catLabel:"Beziehung",title:"Sprache der Co-Regulation",tags:["beziehung","eskalation"],
+   summary:"Die richtigen Worte in den schwersten Momenten.",
+   body:`<p>In der akuten Erregung sind wenige Worte wirksamer als viele. Hier sind die Mantra-Sätze, die in den meisten Eskalationen helfen:</p>
+     <ul>
+       <li>„Ich bin da."</li>
+       <li>„Du bist sicher."</li>
+       <li>„Ich helfe Dir."</li>
+       <li>„Wir kriegen das zusammen hin."</li>
+       <li>„Das ist viel gerade. Ich bleibe."</li>
+     </ul>
+     <p>Wiederhole denselben Satz, statt zu variieren. Wiederholung wirkt — Variation überfordert.</p>`},
+  {cat:"beziehung",catLabel:"Beziehung",title:"Was Du nie zu einem Kind sagst",tags:["beziehung","schutz"],
+   summary:"Sechs Sätze, die das Gegenteil bewirken.",
+   body:`<ul>
+       <li>„Stell Dich nicht so an."</li>
+       <li>„Das ist doch nicht so schlimm."</li>
+       <li>„Reiß Dich zusammen."</li>
+       <li>„Hör auf zu heulen, sonst …"</li>
+       <li>„Wenn Du Dich nicht benimmst, sag ich es Deiner Mama."</li>
+       <li>„Bist Du jetzt fertig mit Deinem Theater?"</li>
+     </ul>
+     <p>Wenn Du Dich dabei ertappst — kein Drama. Bemerken, kurz mit Kind reparieren („Das war gerade nicht in Ordnung, was ich gesagt habe. Tut mir leid."), in der Übergabe vermerken.</p>`},
+  {cat:"eskalation",catLabel:"Eskalation",title:"Das 5-Stufen-Modell auf einen Blick",tags:["eskalation","krise"],
+   summary:"Komprimierte Übersicht der Eskalations-Stufen.",
+   body:`<ol>
+       <li><strong>Stufe 1 — Unruhe:</strong> Reizreduktion, Nähe, Marte-Meo-Benennen.</li>
+       <li><strong>Stufe 2 — Ausagieren:</strong> Ruhige Stimme, tiefer Körper, Optionen anbieten.</li>
+       <li><strong>Stufe 3 — Krise:</strong> 1:1-Begleitung, andere Kinder weg, Bereichsleitung.</li>
+       <li><strong>Stufe 4 — Gefährdung:</strong> Schutz vor Programm. Arzt vom Dienst.</li>
+       <li><strong>Stufe 5 — Nachsorge:</strong> Nicht allein lassen, frühestens nach 30 Min reden.</li>
+     </ol>
+     <p>Voller Lernpfad: <a href="#" onclick="closeKB();openPath('eskalation');return false;">Eskalation &amp; Deeskalation</a>.</p>`},
+  {cat:"eskalation",catLabel:"Eskalation",title:"Time-In statt Time-Out",tags:["eskalation","krise"],
+   summary:"Warum wir Kinder bei uns lassen, statt sie wegzuschicken.",
+   body:`<p>Time-Out — das alleinige Wegschicken — verstärkt bei traumatisch belasteten Kindern Erregung und Beschämung. Wir machen das nicht.</p>
+     <h3>Time-In so geht's</h3>
+     <ul><li>Reizärmerer Bereich, wir bleiben präsent.</li><li>Weiches Sitzkissen, sensorisches Material, Sanduhr.</li><li>Keine Aufgabe, keine Bedingung.</li><li>Kind entscheidet, wann es zurück will.</li></ul>`},
+  {cat:"eskalation",catLabel:"Eskalation",title:"Abgängiges Kind — Sofortprotokoll",tags:["eskalation","abgängig","schutz"],
+   summary:"Die ersten 15 Minuten entscheiden.",
+   body:`<ol>
+       <li><strong>Min 0–2:</strong> Letzten Ort, Uhrzeit, Kleidung dokumentieren. Andere Kinder ruhig sammeln.</li>
+       <li><strong>Min 2–5:</strong> Naheliegende Räume — Toilette, Garderobe, Zimmer.</li>
+       <li><strong>Min 5–10:</strong> Bereichsleitung &amp; Pforte. Begleitperson ruhig informieren.</li>
+       <li><strong>Min 10–15:</strong> Klinikgelände systematisch. Zuständigkeiten verteilen.</li>
+       <li><strong>Ab Min 15:</strong> Geschäftsführung &amp; Polizei (110). Umgebung erweitern.</li>
+     </ol>
+     <p>Bei Rückkehr: Erleichterung, kein Vorwurf. Medizinische Sichtung. Klärungsgespräch erst nach Beruhigung.</p>`},
+  {cat:"schutz",catLabel:"Schutz &amp; Recht",title:"§ 8a SGB VIII — was es konkret bedeutet",tags:["schutz","recht"],
+   summary:"Schutzauftrag bei Kindeswohlgefährdung — unser rechtlicher Rahmen.",
+   body:`<p>§ 8a SGB VIII verpflichtet uns, einem Hinweis auf Kindeswohlgefährdung mit einer Gefährdungseinschätzung nachzugehen. Die Einschätzung erfolgt mit einer <em>insoweit erfahrenen Fachkraft (IsoFa)</em>.</p>
+     <h3>Was zählt als Hinweis?</h3>
+     <ul><li>Direkte Schilderung des Kindes.</li><li>Beobachtung von Verletzungen, Vernachlässigung, Verstörung.</li><li>Aussagen Dritter (Geschwister, andere Eltern).</li><li>Auffälliges Verhalten in Kombination mit Kontext.</li></ul>
+     <h3>Was wir tun</h3>
+     <ol><li>Beobachtung dokumentieren.</li><li>Bereichsleitung &amp; Präventionsbeauftragte sofort informieren.</li><li>IsoFa-Beratung anstoßen.</li><li>Risikoeinschätzung im Team.</li><li>Weitere Schritte nach Trägerverfahren.</li></ol>`},
+  {cat:"schutz",catLabel:"Schutz &amp; Recht",title:"Datenschutz im Alltag",tags:["schutz","recht","doku"],
+   summary:"DSGVO praxistauglich — was Du als Erzieher:in wissen musst.",
+   body:`<ul>
+       <li>Kein WhatsApp, kein privater Mail-Verkehr über Patient:innen.</li>
+       <li>Dokumentation ausschließlich im KIS / pädagogischen Dokumentationssystem.</li>
+       <li>Bei Konferenzen: keine Namen am offenen Tisch im öffentlichen Bereich.</li>
+       <li>Fotos: Dienstgerät, mit Einwilligung, dienstlicher Zweck.</li>
+       <li>Bildschirm sperren beim Verlassen des Computers (auch für 2 Min).</li>
+       <li>Mündliche Auskunft an Dritte (auch Familie) nur mit Einwilligung.</li>
+     </ul>`},
+  {cat:"team",catLabel:"Team",title:"Übergabe — schriftlich und mündlich",tags:["team","doku","alltag"],
+   summary:"Wie eine gute Übergabe gelingt — kurz, konkret, ressourcenorientiert.",
+   body:`<h3>Schriftlich (KIS)</h3>
+     <ul><li>Pro Kind: Tageszustand, besondere Vorkommnisse, anstehende Termine.</li><li>Sachlich, beobachtbar, ohne Bewertung.</li><li>Originaltöne in Anführung.</li></ul>
+     <h3>Mündlich (Dienstwechsel)</h3>
+     <ul><li>Bei Bedarf-Kindern: kurz, konkret, 1–2 Min pro Kind.</li><li>Was war heute auffällig? Was steht an? Was muss ich heute Nacht / morgen wissen?</li><li>Bei Vorfall Stufe 3+: separat ausführlich, Bereichsleitung dabei.</li></ul>`},
+  {cat:"team",catLabel:"Team",title:"Wer ist wofür zuständig?",tags:["team","schnittstelle"],
+   summary:"RACI für unsere Berufsgruppen.",
+   body:`<ul>
+       <li><strong>Medizin:</strong> Diagnose, Medikation, körperliche Akutfälle, Gesamtbeurteilung.</li>
+       <li><strong>Psychologie:</strong> Psychotherapie, psychische Krisen, Verhaltenspläne, Diagnostik.</li>
+       <li><strong>Therapie:</strong> Physio, Ergo, Logo, Kunst — Einheiten und Transfer.</li>
+       <li><strong>Klinikschule:</strong> Schulischer Anschluss, Lerndiagnostik, Klassenkontakt.</li>
+       <li><strong>Erzieher / Pädagogik:</strong> Alltagsbegleitung, Gruppendynamik, Beziehung, Transfer.</li>
+     </ul>
+     <p>Im Zweifel: lieber doppelt weitergeben als zu wenig.</p>`},
+  {cat:"doku",catLabel:"Dokumentation",title:"So dokumentierst Du richtig",tags:["doku","recht"],
+   summary:"Sachlich, beobachtbar, ohne Bewertung — die Grundregel.",
+   body:`<p>Faustregel: <em>Was würde eine Außenstehende daraus verstehen?</em></p>
+     <h3>Beispiel — schlecht</h3>
+     <blockquote>Lena war heute mal wieder völlig daneben.</blockquote>
+     <h3>Beispiel — gut</h3>
+     <blockquote>Lena verließ um 10:30 ohne Anlass den Gruppenraum, kehrte nach 12 Min zurück, war stark verbal aggressiv (O-Ton: „Ihr seid alle blöd."), beruhigte sich nach 8 Min 1:1-Begleitung mit M. Atemübung erfolgreich.</blockquote>
+     <h3>Pflichten</h3>
+     <ul><li>Tagesbericht spätestens am Ende des Dienstes.</li><li>Vorfallsbericht bei Eskalation Stufe 3+ innerhalb 24 Stunden.</li><li>Originaltöne immer in Anführung.</li></ul>`},
+  {cat:"doku",catLabel:"Dokumentation",title:"Vorfallsbericht",tags:["doku","eskalation","recht"],
+   summary:"Wann und wie Du einen Vorfallsbericht schreibst.",
+   body:`<p>Vorfallsbericht ist Pflicht bei: Eskalation Stufe 3+, körperlicher Intervention, Verletzung, Abgängigkeit, Verdacht auf Kindeswohlgefährdung, sexualisierter Grenzverletzung.</p>
+     <h3>Was hineingehört</h3>
+     <ol><li>Wer war anwesend? (Vollständig)</li><li>Was ist passiert? (Chronologisch, beobachtbar)</li><li>Wie habt Ihr reagiert? (Maßnahmen mit Zeit)</li><li>Wie ging es weiter? (Nachsorge)</li><li>Wer wurde wann informiert?</li><li>Empfehlung / nächste Schritte.</li></ol>
+     <p>Innerhalb 24 Stunden bei Bereichsleitung. Bei Ereignissen Stufe 4: noch am selben Tag.</p>`},
+  {cat:"selbst",catLabel:"Selbstfürsorge",title:"Wenn Du nach dem Dienst nicht abschalten kannst",tags:["selbst","team"],
+   summary:"Was wirkt — akut, mittelfristig, langfristig.",
+   body:`<h3>Akut (heute)</h3>
+     <ul><li>Übergangsritual: Kleidung wechseln, Hände waschen, kurzer Spaziergang.</li><li>Bewegung, Tageslicht.</li><li>Nicht alleine sein.</li></ul>
+     <h3>Mittelfristig (diese Woche)</h3>
+     <ul><li>Kollegiale Beratung am Folgetag.</li><li>Schlaf priorisieren.</li><li>Themen klar benennen, statt vage zu zermürben.</li></ul>
+     <h3>Langfristig</h3>
+     <ul><li>Bei kreisenden Gedanken &gt; 2 Wochen: Mitarbeiterberatung.</li><li>Externe Supervision aktiv nutzen.</li><li>Ärztliche Abklärung, wenn körperliche Symptome dazukommen.</li></ul>`},
+  {cat:"selbst",catLabel:"Selbstfürsorge",title:"Sekundäre Traumatisierung — Warnzeichen",tags:["selbst"],
+   summary:"Erkenne früh, was sich anbahnt.",
+   body:`<ul><li>Schlafstörungen, Albträume mit Klinik-Bezug.</li><li>Kreisende Gedanken um Kinder im Privaten.</li><li>Reizbarkeit, Zynismus, Abstumpfung.</li><li>Vermeidung bestimmter Kinder oder Themen.</li><li>Gefühl, nicht abschalten zu können.</li><li>Körperliche Symptome (Kopfschmerz, Magen, Erschöpfung).</li></ul>
+     <p>Bei 3+ Punkten &gt; 2 Wochen: Bereichsleitung ansprechen, Mitarbeiterberatung nutzen.</p>`},
+  {cat:"eltern",catLabel:"Eltern",title:"Tür-und-Angel-Gespräche mit Begleitperson",tags:["eltern","alltag"],
+   summary:"Begrüßen, informieren, abgrenzen — in 90 Sekunden.",
+   body:`<p>Die Begleitperson ist selbst Patient:in und oft erschöpft. Wir begegnen ihr wertschätzend, ohne unsere Rolle zu verlieren.</p>
+     <h3>Was wir leisten</h3>
+     <ul><li>Tägliche Übergabe morgens/mittags — sachlich, ressourcenorientiert.</li><li>Information bei Vorkommnissen zeitnah.</li><li>Weiterleitung an zuständige Berufsgruppe bei Fragen außerhalb unserer Rolle.</li></ul>
+     <h3>Was wir nicht leisten</h3>
+     <ul><li>Therapie oder Beratung.</li><li>Medikations-Empfehlungen.</li><li>Vermittlung in Erziehungs- oder Trennungsfragen.</li></ul>`},
+  {cat:"eltern",catLabel:"Eltern",title:"Wenn Eltern viele Fragen stellen",tags:["eltern","alltag"],
+   summary:"Wertschätzend hören, klar sortieren.",
+   body:`<ol>
+       <li>30 Sekunden hören, ohne zu unterbrechen.</li>
+       <li>Spiegeln: „Sie machen sich Sorgen, dass …"</li>
+       <li>Sortieren: was ist Erzieher-Thema (Tag, Material), was gehört zu Psychologie / Arzt / Sozialdienst.</li>
+       <li>Weiterleiten mit Namen: „Diese Frage gebe ich an Frau X weiter, sie kann das besser einordnen."</li>
+     </ol>`},
+  {cat:"material",catLabel:"Material",title:"Der Methodenkoffer",tags:["material","alltag"],
+   summary:"Was immer dabei sein sollte — und wie wir ihn pflegen.",
+   body:`<h3>Selbstregulation</h3>
+     <ul><li>Knetkugel, Stachelball, Linsen-Säckchen.</li><li>Atemkarten (Box, Bauch, 4-7-8).</li><li>Gefühle-Plakat mit Bildern.</li><li>Sanduhren 1/3/5 Min.</li></ul>
+     <h3>Struktur</h3>
+     <ul><li>Piktogramm-Tagesplan.</li><li>Jetzt-Gleich-Später-Tafel.</li><li>Countdown-Karten 5/3/1.</li></ul>
+     <h3>Beziehung &amp; Sprache</h3>
+     <ul><li>Erzählwürfel, Gefühlekarten.</li><li>Bilderbücher zu Angst, Wut, Trauer, Mut.</li><li>Marte-Meo-Spickzettel.</li></ul>
+     <h3>Pflege-Regel</h3>
+     <ul><li>Was nicht beschriftet ist, ist nicht im Koffer.</li><li>Was kaputt ist, wird entsorgt.</li><li>Scheren, Schnüre, Kleinteile unter Aufsicht.</li></ul>`},
+  {cat:"diagnose",catLabel:"Diagnose",title:"Verhalten als Sprache — die Übersetzungs-Übung",tags:["diagnose","beziehung"],
+   summary:"Jedes herausfordernde Verhalten sagt etwas.",
+   body:`<p>Statt zu fragen „Wie wird das Verhalten weniger?", frag: „Was sagt mir das Kind gerade?".</p>
+     <h3>Beispiele</h3>
+     <ul>
+       <li>Klammern → „Ich brauche jetzt Sicherheit."</li>
+       <li>Wegrennen → „Ich kann diesen Reiz nicht aushalten."</li>
+       <li>Schreien → „Ich werde nicht gehört."</li>
+       <li>Stille → „Ich habe gelernt, dass Reden gefährlich ist."</li>
+       <li>Aggression → „Ich habe Angst und kann sie nicht anders zeigen."</li>
+     </ul>
+     <p>Diese Übersetzung verändert <em>unsere</em> Reaktion — und damit das ganze Klima der Gruppe.</p>`},
+  {cat:"diagnose",catLabel:"Diagnose",title:"Suizidale Äußerungen — wie reagieren?",tags:["diagnose","eskalation"],
+   summary:"Ernst nehmen, nicht alleine lassen, weiterleiten.",
+   body:`<p>Suizidäußerungen werden <strong>immer</strong> ernst genommen — auch beiläufige.</p>
+     <h3>Was Du tust</h3>
+     <ol>
+       <li>Zeit nehmen, ruhig fragen: „Hast Du gedacht, Dir etwas anzutun? Wie? Wann?"</li>
+       <li>Beim Kind bleiben, nicht allein lassen.</li>
+       <li>Sofort Arzt vom Dienst und Psychologie informieren.</li>
+       <li>Schriftliche Dokumentation noch im Dienst.</li>
+       <li>Begleitperson informieren — in Absprache mit Arzt/Psychologie.</li>
+     </ol>
+     <p>Bei akuter Suizidalität: keine Versprechen, dass es vertraulich bleibt. Sicherheit geht vor.</p>`}
+];
+
+const kbFilters = document.getElementById("kbFilters");
+const kbArticles = document.getElementById("kbArticles");
+const kbCount = document.getElementById("kbCount");
+const kbEmpty = document.getElementById("kbEmpty");
+let activeCat = "all";
+
+function renderKB(){
+  const items = activeCat==="all" ? KB : KB.filter(a=>a.cat===activeCat);
+  kbArticles.innerHTML = items.map((a,i)=>`
+    <article class="kb-article" onclick="openKB(${KB.indexOf(a)})" tabindex="0" role="button" aria-label="${a.title.replace(/&amp;/g,'&').replace(/"/g,'&quot;')}">
+      <div class="kb-cat">${a.catLabel}</div>
+      <h4>${a.title}</h4>
+      <p>${a.summary}</p>
+      <div class="kb-tags">${a.tags.map(t=>'<span class="kb-tag">#'+t+'</span>').join('')}</div>
+    </article>`).join("");
+  kbArticles.querySelectorAll(".kb-article").forEach(c=>c.addEventListener("keydown",e=>{
+    if (e.key==="Enter"||e.key===" "){e.preventDefault();c.click();}
+  }));
+  kbCount.textContent = items.length===KB.length ? `Alle ${KB.length} Artikel` : `${items.length} von ${KB.length} Artikeln`;
+  kbEmpty.classList.toggle("hidden", items.length>0);
+}
+kbFilters.addEventListener("click",e=>{
+  const btn = e.target.closest(".tag"); if (!btn) return;
+  kbFilters.querySelectorAll(".tag").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  activeCat = btn.dataset.cat;
+  renderKB();
+});
+renderKB();
+
+function openKB(idx){
+  const a = KB[idx]; if (!a) return;
+  document.getElementById("kbModalTitle").innerHTML = a.title;
+  document.getElementById("kbModalBody").innerHTML = `
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;">
+      <span class="kb-cat" style="font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bordeaux);font-weight:600;">${a.catLabel}</span>
+      ${a.tags.map(t=>'<span class="kb-tag" style="font-size:.72rem;padding:.18rem .55rem;background:var(--paper-2);border-radius:4px;color:var(--ink-3);">#'+t+'</span>').join('')}
+    </div>
+    <div style="line-height:1.65;color:var(--ink-2);">${a.body}</div>`;
+  document.getElementById("kbModal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeKB(){document.getElementById("kbModal").classList.remove("open");document.body.style.overflow="";}
+
+/* ========================================================
+   GENERISCHES FAQ — Top 12
+   ======================================================== */
+const FAQ = [
+  {q:"Was tue ich am ersten Tag eines neuen Kindes?",
+   a:`<p>Beziehung vor Programm. Begrüßung auf Augenhöhe, Hausführung, Buddy-Kind, „Jetzt-Gleich-Später" laut benennen, Übergabe an Folgedienst mit Hinweis „Neu, erster Tag". Bei Aktivitäten zuschauen ist erlaubt.</p>`},
+  {q:"Darf ich ein Kind in den Arm nehmen?",
+   a:`<p>Wenn pädagogisch indiziert, vom Kind angenommen und für andere sichtbar — ja. Nicht im Intimbereich, nicht auf den Schoß, keine längere frontale Umarmung. Bei Unsicherheit: Hand auf Schulter, kurz, seitlich.</p>`},
+  {q:"Wie reagiere ich, wenn ein Kind eskaliert?",
+   a:`<p>Atmen. Stimme tief. Körper unterhalb der Augenhöhe. „Ich bin da. Du bist sicher." in Schleife. Andere Kinder aus der Situation. Bei Stufe 3+ Bereichsleitung. Niemals einschließen, niemals beschämen.</p>`},
+  {q:"Was, wenn ein Kind suizidale Gedanken äußert?",
+   a:`<p>Immer ernst nehmen. Zeit nehmen, konkret nachfragen. Beim Kind bleiben. Sofort Arzt vom Dienst und Psychologie. Schriftliche Doku noch im Dienst. Keine Vertraulichkeit versprechen.</p>`},
+  {q:"Wie spreche ich mit einer Mutter, die viele Fragen stellt?",
+   a:`<p>Zuhören, spiegeln, sortieren, weiterleiten. „Diese Frage gebe ich an Frau X weiter." Die Begleitperson ist selbst Patient:in und oft erschöpft — wertschätzend bleiben.</p>`},
+  {q:"Wann gehe ich zu Arzt vom Dienst, wann zu Psychologie?",
+   a:`<p>Arzt: Körper, Medikation, akute medizinische Themen. Psychologie: psychische Krise, Selbstabwertung, Suizidalität, Verhaltenspläne, Diagnostik-Fragen. In Grenzfällen lieber beide.</p>`},
+  {q:"Wie dokumentiere ich richtig?",
+   a:`<p>Sachlich, beobachtbar, ohne Bewertung. Originaltöne in Anführung. Tagesbericht am Ende des Dienstes. Vorfallsbericht bei Eskalation Stufe 3+ innerhalb 24 Stunden.</p>`},
+  {q:"Was tue ich, wenn ich selbst nicht mehr kann?",
+   a:`<p>Sag es. Übergib eine Situation. 10 Min echte Pause. Bereichsleitung ansprechen. Nutze Supervision. Bei wiederkehrender Erschöpfung: Mitarbeiterberatung.</p>`},
+  {q:"Ein Kind erzählt mir etwas, das nach Gewalt klingt — was jetzt?",
+   a:`<p>Ruhig zuhören, keine Suggestivfragen. Wörtlich dokumentieren. <strong>Keine</strong> Vertraulichkeit zusagen. Heute noch Bereichsleitung &amp; Präventionsbeauftragte. IsoFa-Beratung gemäß § 8a SGB VIII.</p>`},
+  {q:"Ein Kind ist plötzlich verschwunden — was tue ich?",
+   a:`<p>Sofortprotokoll: Min 0–2 dokumentieren. Min 2–5 naheliegende Räume. Min 5–10 Bereichsleitung &amp; Pforte &amp; Begleitperson. Min 10–15 Klinikgelände. Ab Min 15: Polizei 110.</p>`},
+  {q:"Darf ich Fotos von Kindern machen?",
+   a:`<p>Nur Dienstgerät, nur mit schriftlicher Einwilligung, nur dienstlicher Zweck. Niemals Toilette, Umkleide, Schlaf, Akutphase. Privates Smartphone bleibt in der Tasche.</p>`},
+  {q:"Was sind die wichtigsten Marte-Meo-Schritte für den Alltag?",
+   a:`<p>1. Atme einmal kurz, bevor Du reagierst. 2. Sieh hin, dann sag etwas (Initiative wahrnehmen → bestätigen → benennen). 3. Markiere Anfang und Ende jeder Aktivität deutlich.</p>`}
+];
+
+const faqList = document.getElementById("faqList");
+faqList.innerHTML = FAQ.map(f=>`
+  <details class="qa"><summary><span class="qtitle">${f.q}</span><span class="arrow">▾</span></summary>
+    <div class="qbody">${f.a}</div></details>
+`).join("");
+
+/* ========================================================
+   SEARCH — über KB + FAQ + Lernpfade + Diagnose + Sections
+   ======================================================== */
+const SECTION_INDEX = [
+  {title:"Vision &amp; Mission",href:"#vision",cat:"Sektion",snippet:"Drei Sätze, die jede Kollegin und jeder Kollege im Schlaf können sollte. Warum, Wie, Was. Vier Werte."},
+  {title:"Onboarding 30/60/90",href:"#onboarding",cat:"Sektion",snippet:"Vier Etappen mit klaren Ankern. Buddy begleitet die ersten 90 Tage."},
+  {title:"Diagnose-Karten",href:"#diagnosen",cat:"Sektion",snippet:"Sieben Karten: Was Du siehst, was es bedeuten kann, was hilft, was schadet."},
+  {title:"Eskalations-Stufen",href:"#eskalation",cat:"Sektion",snippet:"Fünf Stufen, fünf Handlungsmuster. Unruhe, Ausagieren, Krise, Gefährdung, Nachsorge."},
+  {title:"Schutzkonzept &amp; Verhaltenskodex",href:"#schutz",cat:"Sektion",snippet:"Sechs verbindliche Regeln. Diözesane Präventionsordnung, § 8a, § 72a SGB VIII."},
+  {title:"Wissensdatenbank",href:"#wissen",cat:"Sektion",snippet:"Kuratie Artikel zu Alltag, Beziehung, Diagnose, Eskalation, Schutz, Team, Doku, Selbstfürsorge."},
+  {title:"Häufige Fragen (FAQ)",href:"#faq",cat:"Sektion",snippet:"Die zwölf Fragen, die jede:r beantworten können sollte."}
+];
+
+function buildSearchIndex(){
+  const idx = [];
+  // Sections
+  SECTION_INDEX.forEach(s=>idx.push({type:"sektion",title:s.title,snippet:s.snippet,action:`location.hash='${s.href}'`,text:s.title+" "+s.snippet}));
+  // Lernpfade
+  PATHS.forEach(p=>{
+    const fullText = p.title+" "+p.lede+" "+p.summary+" "+p.modules.map(m=>m.t+" "+stripTags(m.body)).join(" ");
+    idx.push({type:"lernpfad",title:"Lernpfad: "+p.title,snippet:p.lede,action:`openPath('${p.id}')`,text:fullText});
+    p.modules.forEach((m,i)=>{
+      idx.push({type:"modul",title:p.title+" — "+m.t,snippet:stripTags(m.body).slice(0,160),action:`openPath('${p.id}');setTimeout(()=>document.getElementById('lpm-${i}').scrollIntoView({behavior:'smooth'}),120)`,text:m.t+" "+stripTags(m.body)});
+    });
+  });
+  // Diagnose
+  DIAG.forEach(d=>{
+    const t = d.title+" "+d.lede+" "+d.see.join(" ")+" "+d.mean.join(" ")+" "+d.help.join(" ")+" "+d.harm.join(" ");
+    idx.push({type:"diagnose",title:"Diagnose: "+d.title,snippet:d.lede,action:`openDiag('${d.id}')`,text:t});
+  });
+  // KB
+  KB.forEach((a,i)=>{
+    const t = a.title+" "+a.summary+" "+a.tags.join(" ")+" "+stripTags(a.body);
+    idx.push({type:"artikel",title:a.title,snippet:a.summary,action:`openKB(${i})`,text:t});
+  });
+  // FAQ
+  FAQ.forEach((f,i)=>{
+    idx.push({type:"faq",title:"FAQ: "+f.q,snippet:stripTags(f.a).slice(0,160),action:`location.hash='#faq';setTimeout(()=>{const els=document.querySelectorAll('#faqList details');if(els[${i}]){els[${i}].open=true;els[${i}].scrollIntoView({behavior:'smooth',block:'center'});}},150)`,text:f.q+" "+stripTags(f.a)});
+  });
+  return idx;
+}
+function stripTags(html){return html.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();}
+function escapeHTML(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function highlight(text,q){
+  if (!q) return escapeHTML(text);
+  const re = new RegExp("("+q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig");
+  return escapeHTML(text).replace(re,"<mark>$1</mark>");
+}
+
+const SEARCH_INDEX = buildSearchIndex();
+const searchInput = document.getElementById("searchInput");
+const searchInputMobile = document.getElementById("searchInputMobile");
+const searchResults = document.getElementById("searchResults");
+
+function runSearch(q,targetContainer){
+  q = q.trim();
+  if (q.length<2){ targetContainer.classList.remove("show"); targetContainer.innerHTML=""; return; }
+  const ql = q.toLowerCase();
+  const matches = [];
+  SEARCH_INDEX.forEach(it=>{
+    const tl = it.text.toLowerCase();
+    const idx = tl.indexOf(ql);
+    if (idx>-1){
+      let snip = it.snippet;
+      const ti = it.text.toLowerCase().indexOf(ql);
+      if (ti>-1){
+        const start = Math.max(0,ti-40);
+        snip = (start>0?"…":"") + it.text.slice(start,ti+q.length+80).replace(/<[^>]+>/g," ") + "…";
+      }
+      matches.push({...it,snippet:snip,score:idx===0?0:1});
+    }
+  });
+  matches.sort((a,b)=>a.score-b.score);
+  if (matches.length===0){
+    targetContainer.innerHTML = '<div class="sr-empty">Keine Treffer für „'+escapeHTML(q)+'". Probiere ein anderes Stichwort.</div>';
+    targetContainer.classList.add("show");
+    return;
+  }
+  const groups = {};
+  matches.slice(0,40).forEach(m=>{(groups[m.type]=groups[m.type]||[]).push(m);});
+  const labels = {sektion:"Bereiche",lernpfad:"Lernpfade",modul:"Module",diagnose:"Diagnose-Karten",artikel:"Wissensdatenbank",faq:"FAQ"};
+  const order = ["sektion","faq","artikel","diagnose","lernpfad","modul"];
+  let html = "";
+  order.forEach(g=>{
+    if (groups[g]){
+      html += `<div class="sr-group">${labels[g]} · ${groups[g].length}</div>`;
+      groups[g].forEach(m=>{
+        const safeAction = m.action.replace(/'/g,"&#39;").replace(/"/g,"&quot;");
+        html += `<div class="sr-item" onclick="closeSearchAfter(()=>{${safeAction}})"><div class="sr-title">${highlight(m.title.replace(/&amp;/g,'&'),q)}</div><div class="sr-snippet">${highlight(m.snippet,q)}</div></div>`;
+      });
+    }
+  });
+  targetContainer.innerHTML = html;
+  targetContainer.classList.add("show");
+}
+function closeSearchAfter(fn){
+  searchResults.classList.remove("show");
+  if (searchInput) searchInput.value="";
+  closeMobileSearch();
+  try { fn(); } catch(e){ console.error(e); }
+}
+
+searchInput?.addEventListener("input",e=>runSearch(e.target.value,searchResults));
+searchInput?.addEventListener("focus",e=>{ if (e.target.value.trim().length>=2) searchResults.classList.add("show"); });
+document.addEventListener("click",e=>{
+  if (!e.target.closest(".search-wrap")) searchResults.classList.remove("show");
+});
+
+// For mobile search, we display results inline below the mobile search bar — reuse same container
+searchInputMobile?.addEventListener("input",e=>{
+  // Reuse the same results panel - it's anchored to the desktop search input
+  // For mobile, attach results to a separate container under the mobile bar
+  runSearchMobile(e.target.value);
+});
+
+let mobileSearchResults = null;
+function ensureMobileSearchResults(){
+  if (!mobileSearchResults){
+    mobileSearchResults = document.createElement("div");
+    mobileSearchResults.className = "search-results";
+    mobileSearchResults.style.position = "fixed";
+    mobileSearchResults.style.top = "calc(60px + var(--safe-top))";
+    mobileSearchResults.style.left = "4vw";
+    mobileSearchResults.style.right = "4vw";
+    mobileSearchResults.style.width = "auto";
+    mobileSearchResults.style.maxHeight = "70vh";
+    mobileSearchResults.style.zIndex = "56";
+    document.body.appendChild(mobileSearchResults);
+  }
+  return mobileSearchResults;
+}
+function runSearchMobile(q){
+  const c = ensureMobileSearchResults();
+  runSearch(q,c);
+}
+
+/* ========================================================
+   NAV HIGHLIGHTING
+   ======================================================== */
+const navLinks = document.querySelectorAll(".nav a.nlink");
+const sectionMap = ["#vision","#onboarding","#schulung","#wissen","#faq"];
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if (en.isIntersecting){
+      const id = "#"+en.target.id;
+      navLinks.forEach(a=>{
+        a.style.color = a.getAttribute("href")===id ? "var(--bordeaux)" : "";
+        a.style.background = a.getAttribute("href")===id ? "var(--bordeaux-50)" : "";
+      });
+    }
+  });
+},{threshold:.2,rootMargin:"-30% 0px -50% 0px"});
+sectionMap.forEach(s=>{const el=document.querySelector(s); if (el) obs.observe(el);});
+
+/* ========================================================
+   MOBILE NOTFALL: native tel link prominent
+   ======================================================== */
+function detectMobile(){
+  return /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent) || window.innerWidth<=780;
+}
+(function adjustNotfall(){
+  if (detectMobile()){
+    document.getElementById("npCallLabel").textContent = "Jetzt anrufen (Notfall)";
+  }
+})();
+
+</script>
+</body>
+</html>
