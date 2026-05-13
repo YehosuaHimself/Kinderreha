@@ -464,37 +464,45 @@ details.qa .qtag{font-size:.72rem;padding:.18rem .55rem;background:var(--paper-2
   backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:1.5rem}
 @media (max-width:560px){.np-backdrop{padding:0;align-items:flex-end}}
 .np-backdrop.open{display:flex;animation:fade .25s ease-out}
-.np-modal{background:var(--paper);border-radius:var(--r-xl);max-width:560px;width:100%;
+.np-modal{background:var(--paper);border-radius:var(--r-xl);max-width:900px;width:100%;
+  max-height:94vh;display:flex;flex-direction:column;
   box-shadow:var(--shadow-lg);overflow:hidden;animation:rise .35s cubic-bezier(.2,.7,.3,1)}
+@media (max-width:760px){.np-modal{max-width:560px}}
 @media (max-width:560px){.np-modal{border-radius:var(--r-xl) var(--r-xl) 0 0;
   animation:slideUpModal .35s cubic-bezier(.2,.7,.3,1)}}
 .np-head{background:linear-gradient(135deg,var(--bordeaux) 0%,var(--bordeaux-800) 100%);color:#fff;
-  padding:1.5rem 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.np-head h3{color:#fff;font-family:var(--serif);font-size:1.4rem}
-.np-head p{color:rgba(255,255,255,.85);margin:.2rem 0 0;font-size:.86rem}
-.np-close{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:50%;width:36px;height:36px;
+  padding:1.1rem 1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-shrink:0}
+.np-head h3{color:#fff;font-family:var(--serif);font-size:1.3rem}
+.np-head p{color:rgba(255,255,255,.85);margin:.15rem 0 0;font-size:.82rem}
+.np-close{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:50%;width:34px;height:34px;
   cursor:pointer;display:grid;place-items:center;font-size:1.1rem;flex-shrink:0}
 .np-close:hover{background:rgba(255,255,255,.25)}
-.np-body{padding:1.8rem 1.6rem 2rem}
-@media (max-width:560px){.np-body{padding:1.3rem 1.2rem 1.6rem}}
-.np-number{font-family:var(--serif);font-size:clamp(1.8rem,5.5vw,2.5rem);text-align:center;color:var(--bordeaux);font-weight:600;letter-spacing:-.01em;margin-bottom:.4rem;line-height:1.1;word-break:break-all}
-.np-label{text-align:center;font-size:.86rem;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem}
-.np-call{display:flex;align-items:center;justify-content:center;gap:.6rem;
+.np-body{padding:1.3rem 1.6rem 1.6rem;overflow:auto;flex:1;min-height:0}
+@media (max-width:560px){.np-body{padding:1.1rem 1.2rem 1.4rem}}
+
+/* Desktop 2-column grid: left=call action+QR, right=all numbers */
+.np-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
+@media (max-width:760px){.np-grid{grid-template-columns:1fr;gap:1.2rem}}
+.np-col{min-width:0}
+
+.np-number{font-family:var(--serif);font-size:clamp(1.55rem,3.5vw,1.95rem);text-align:center;color:var(--bordeaux);font-weight:600;letter-spacing:-.01em;margin-bottom:.35rem;line-height:1.1;word-break:break-word}
+.np-label{text-align:center;font-size:.74rem;color:var(--ink-3);letter-spacing:.10em;text-transform:uppercase;margin-bottom:.85rem;font-weight:600}
+.np-call{display:flex;align-items:center;justify-content:center;gap:.55rem;
   background:var(--bordeaux);color:#fff!important;text-decoration:none;
-  padding:1.1rem 1.2rem;border-radius:14px;font-weight:600;font-size:1.05rem;
-  box-shadow:0 8px 20px -8px rgba(172,29,60,.5);transition:all var(--tr)}
+  padding:.95rem 1.2rem;border-radius:12px;font-weight:600;font-size:1rem;
+  box-shadow:0 6px 16px -6px rgba(172,29,60,.5);transition:all var(--tr)}
 .np-call:hover{background:var(--bordeaux-700);transform:translateY(-1px);text-decoration:none}
-.np-call svg{flex-shrink:0}
-.np-copy{margin-top:.7rem;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;
-  background:var(--white);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;
-  padding:.85rem 1rem;font:inherit;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--tr)}
+.np-call svg{flex-shrink:0;width:20px;height:20px}
+.np-copy{margin-top:.5rem;width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:var(--white);color:var(--ink);border:1.5px solid var(--line);border-radius:11px;
+  padding:.7rem 1rem;font:inherit;font-weight:500;font-size:.9rem;cursor:pointer;transition:all var(--tr)}
 .np-copy:hover{border-color:var(--bordeaux);color:var(--bordeaux);background:var(--bordeaux-50)}
 .np-copy.copied{background:var(--ok);border-color:var(--ok);color:#fff}
 .np-copy.copied svg{display:none}
-.np-divider{display:flex;align-items:center;gap:.8rem;margin:1.6rem 0;color:var(--ink-3);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.np-divider{display:flex;align-items:center;gap:.7rem;margin:1.1rem 0 .8rem;color:var(--ink-3);font-size:.7rem;letter-spacing:.10em;text-transform:uppercase;font-weight:600}
 .np-divider::before,.np-divider::after{content:"";flex:1;height:1px;background:var(--line)}
-.np-qr-wrap{display:flex;justify-content:center;flex-direction:column;align-items:center;gap:.6rem}
-.np-qr{width:200px;height:200px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;
+.np-qr-wrap{display:flex;justify-content:center;flex-direction:column;align-items:center;gap:.5rem}
+.np-qr{width:148px;height:148px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px;
   box-shadow:var(--shadow-sm)}
 .np-qr svg{width:100%;height:100%;display:block}
 .np-qr-hint{font-size:.84rem;color:var(--ink-3);text-align:center;max-width:320px;line-height:1.45}
@@ -508,14 +516,15 @@ details.qa .qtag{font-size:.72rem;padding:.18rem .55rem;background:var(--paper-2
 @media (min-width:781px){.np-desktop-only{display:block}}
 
 /* Auxiliary numbers section in popup */
-.np-aux{margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--line)}
-.np-aux-title{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:.7rem}
+.np-aux{margin:0}
+@media (max-width:760px){.np-aux{margin-top:1rem;padding-top:1.1rem;border-top:1px solid var(--line)}}
+.np-aux-title{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:.6rem}
 .np-aux a{display:flex;align-items:center;justify-content:space-between;gap:.7rem;
-  padding:.7rem .9rem;background:var(--white);border:1px solid var(--line);border-radius:10px;
-  margin-bottom:.4rem;color:var(--ink);text-decoration:none;transition:all var(--tr)}
-.np-aux a:hover{border-color:var(--bordeaux);background:var(--bordeaux-50)}
-.np-aux a .lbl{font-size:.86rem;color:var(--ink-3)}
-.np-aux a .num{font-family:var(--serif);color:var(--bordeaux);font-weight:600;font-size:1rem}
+  padding:.55rem .8rem;background:var(--white);border:1px solid var(--line);border-radius:10px;
+  margin-bottom:.3rem;color:var(--ink);text-decoration:none;transition:all var(--tr)}
+.np-aux a:hover,.np-aux a:active{border-color:var(--bordeaux);background:var(--bordeaux-50);text-decoration:none}
+.np-aux a .lbl{font-size:.84rem;color:var(--ink);line-height:1.3}
+.np-aux a .num{font-family:var(--serif);color:var(--bordeaux);font-weight:600;font-size:.98rem;flex-shrink:0}
 
 /* ============ MOBILE BOTTOM BAR ============ */
 .mob-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:55;
@@ -749,9 +758,16 @@ html.notfall-bypass .mgate{display:none !important}
     var isDesktop = (window.innerWidth || document.documentElement.clientWidth || 1000) >= 981;
     var isPickerHash = location.hash === '#notfall-picker';
 
-    if (isStandalone || isDesktop || isPickerHash) {
-      var gate = document.getElementById('gate');
-      var mgate = document.getElementById('mgate');
+    var gate = document.getElementById('gate');
+    var mgate = document.getElementById('mgate');
+
+    if (isPickerHash) {
+      /* NOTFALL emergency access — bypass BOTH gates entirely.
+         User scanned QR-Code; muss SOFORT zur Telefonliste, ohne Login. */
+      if (mgate) mgate.style.display = 'none';
+      if (gate)  gate.style.display = 'none';
+      try { localStorage.setItem('wh.notfall_session','1'); } catch(_){}
+    } else if (isStandalone || isDesktop) {
       if (mgate) mgate.style.display = 'none';
       if (gate)  gate.style.display = 'grid';
     }
@@ -1107,42 +1123,49 @@ html.notfall-bypass .mgate{display:none !important}
       <button class="np-close" onclick="closeNotfall()" aria-label="Schließen">✕</button>
     </div>
     <div class="np-body">
-      <div class="np-label">Zentrale Notfall-Nummer</div>
-      <div class="np-number">+49&nbsp;115&nbsp;1519&nbsp;53475</div>
+      <div class="np-grid">
+        <!-- LEFT: Central number + Call + Copy + QR -->
+        <div class="np-col">
+          <div class="np-label">Zentrale Notfall-Nummer</div>
+          <div class="np-number">+49&nbsp;115&nbsp;1519&nbsp;53475</div>
 
-      <a class="np-call" href="tel:+49115151953475" id="npCallBtn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span id="npCallLabel">Jetzt anrufen</span>
-      </a>
+          <a class="np-call" href="tel:+49115151953475" id="npCallBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span id="npCallLabel">Jetzt anrufen</span>
+          </a>
 
-      <button class="np-copy" id="npCopyBtn" onclick="copyNotfallNumber(this)" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span id="npCopyLabel">Nummer kopieren</span>
-      </button>
+          <button class="np-copy" id="npCopyBtn" onclick="copyNotfallNumber(this)" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="npCopyLabel">Nummer kopieren</span>
+          </button>
 
-      <div class="np-desktop-only">
-        <div class="np-divider">oder per Smartphone scannen</div>
-        <div class="np-qr-wrap">
-          <div class="np-qr" id="npQRWrap" aria-hidden="true">
-            <!-- Dynamic QR rendered here by JS -->
+          <div class="np-desktop-only">
+            <div class="np-divider">oder per Smartphone scannen</div>
+            <div class="np-qr-wrap">
+              <div class="np-qr" id="npQRWrap" aria-hidden="true">
+                <!-- Dynamic QR rendered here by JS -->
+              </div>
+              <p class="np-qr-hint">
+                <strong>Native Kamera-App nutzen</strong> — nicht WhatsApp. Beim Scan öffnet sich diese Auswahl direkt auf dem Telefon.
+              </p>
+            </div>
           </div>
-          <p class="np-qr-hint">
-            <strong>Mit der Smartphone-Kamera-App scannen.</strong> Es öffnet sich ein Auswahl-Menü mit allen Notfall-Nummern — antippen, dann ruft das Telefon nativ an.
-          </p>
-          <p class="np-qr-warn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <strong>Tipp:</strong> Mit der nativen Kamera-App scannen (iPhone-Kamera, Android-Kamera) — <em>nicht</em> mit WhatsApp.
-          </p>
         </div>
-      </div>
 
-      <div class="np-aux">
-        <div class="np-aux-title">Weitere Notfall-Kontakte</div>
-        <a href="tel:112"><span class="lbl">Medizinischer Notfall</span><span class="num">112</span></a>
-        <a href="tel:110"><span class="lbl">Polizei</span><span class="num">110</span></a>
-        <a href="tel:+49115151953475"><span class="lbl">Arzt vom Dienst (intern)</span><span class="num">→ wählen</span></a>
-        <a href="tel:+49115151953475"><span class="lbl">Präventionsbeauftragte</span><span class="num">→ wählen</span></a>
-        <a href="tel:+49115151953475"><span class="lbl">Bereichsleitung Pädagogik</span><span class="num">→ wählen</span></a>
+        <!-- RIGHT: All emergency numbers — auf einen Blick -->
+        <div class="np-col">
+          <div class="np-aux">
+            <div class="np-aux-title">Alle Notfall-Kontakte</div>
+            <a href="tel:112"><span class="lbl">Medizinischer Notfall</span><span class="num">112</span></a>
+            <a href="tel:110"><span class="lbl">Polizei</span><span class="num">110</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">Arzt vom Dienst</span><span class="num">→</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">Bereichsleitung Pädagogik</span><span class="num">→</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">Präventionsbeauftragte</span><span class="num">→</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">IsoFa</span><span class="num">→</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">Klinikseelsorge</span><span class="num">→</span></a>
+            <a href="tel:+49115151953475"><span class="lbl">Mitarbeiterberatung · EAP</span><span class="num">→</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1159,7 +1182,7 @@ html.notfall-bypass .mgate{display:none !important}
     <span>Vision</span>
   </a>
   <a href="#diagnosen" aria-label="Pfad · Diagnose-Karten">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h6a3 3 0 0 0 3-3V8"/><rect x="15" y="2" width="6" height="6" rx="1"/></svg>
     <span>Pfad</span>
   </a>
   <a href="#schulung" aria-label="Lernen">
@@ -1275,7 +1298,7 @@ const AUTH_KEY = "wh.auth.v2";
 
 function checkAuth(){
   let authed = false;
-  try { authed = sessionStorage.getItem(AUTH_KEY)==="1"; } catch(_){}
+  try { authed = localStorage.getItem(AUTH_KEY)==="1"; } catch(_){}
   if (authed){
     document.getElementById("gate").style.display="none";
     document.body.style.overflow="";
@@ -1286,7 +1309,7 @@ function checkAuth(){
 }
 function login(user,pass){
   if (user.trim()===VALID_USER && pass===VALID_PASS){
-    try { sessionStorage.setItem(AUTH_KEY,"1"); } catch(_){}
+    try { localStorage.setItem(AUTH_KEY,"1"); } catch(_){}
     const gate = document.getElementById("gate");
     gate.style.transition="opacity .35s ease-out";
     gate.style.opacity="0";
@@ -1296,7 +1319,7 @@ function login(user,pass){
   return false;
 }
 function logout(){
-  try { sessionStorage.removeItem(AUTH_KEY); } catch(_){}
+  try { localStorage.removeItem(AUTH_KEY); } catch(_){}
   location.reload();
 }
 document.getElementById("gateForm").addEventListener("submit",e=>{
@@ -1936,6 +1959,42 @@ function openPath(id){
   document.getElementById("lpContent").scrollTop = 0;
   history.replaceState({path:id},"","#path/"+id);
 }
+
+/* PWA-safe navigation for Mobile-Bottom-Bar, Hamburger, Search, Notfall.
+   iOS Safari im standalone-Modus hat bekannte Quirks mit Hash-Anchor-Links —
+   wir erzwingen explizit scrollIntoView statt auf default-anchor-jump zu vertrauen. */
+function smoothScrollTo(targetId){
+  if (!targetId) return;
+  if (targetId === "#top"){
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  const target = document.querySelector(targetId);
+  if (target){
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+document.querySelectorAll('.mob-bar a[href^="#"]').forEach(function(el){
+  el.addEventListener("click", function(e){
+    e.preventDefault();
+    smoothScrollTo(el.getAttribute("href"));
+  });
+});
+document.querySelectorAll('.nav a[href^="#"], .mobile-nav a[href^="#"], .hero a[href^="#"]:not(.chip[onclick]), .chip[href^="#"]').forEach(function(el){
+  if (el.getAttribute("onclick")) return; /* don't break onclick chips */
+  el.addEventListener("click", function(e){
+    const href = el.getAttribute("href");
+    if (!href || !href.startsWith("#") || href === "#") return;
+    e.preventDefault();
+    smoothScrollTo(href);
+    /* Close mobile nav if open */
+    const mn = document.getElementById("mobileNav");
+    if (mn && mn.classList.contains("open")){
+      mn.classList.remove("open");
+      document.getElementById("hamburger")?.setAttribute("aria-expanded","false");
+    }
+  });
+});
 
 /* TOC click handling — single document-level delegation, runs ONCE.
    Catches buttons even when they're regenerated each time openPath fires. */

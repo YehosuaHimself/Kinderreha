@@ -1,6 +1,6 @@
 /* Service Worker — Wissens-Hub Tagesbetreuung
    v1.7 — aggressive update: network-first für HTML, force-reload aller Clients beim Activate. */
-const CACHE = 'wh-v2.0';
+const CACHE = 'wh-v2.1';
 const SHELL = [
   './',
   'index.html',
