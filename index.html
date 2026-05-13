@@ -75,7 +75,19 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.55;font-size:16px;
-  font-feature-settings:"ss01","cv02";overflow-x:hidden}
+  font-feature-settings:"ss01","cv02";overflow-x:hidden;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;}
+
+/* iOS PWA hardening: ensure SVGs/inner spans inside clickable buttons don't
+   intercept the click event — the button itself must receive it. */
+button .lbl,button svg,button .pulse,a svg,
+.modal-close *,.np-close *,.picker-close *,.drawer-close *,.lp-back *,
+.btn-emergency *,.hamburger *,.search-mobile-btn *{
+  pointer-events:none;
+}
+/* Make all buttons properly hit-target on mobile */
+button,a,[role="button"]{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(184,147,56,.12)}
 a{color:var(--bordeaux);text-decoration:none;text-underline-offset:3px}
 a:hover{text-decoration:underline}
 ::selection{background:var(--bordeaux);color:#fff}
@@ -186,7 +198,7 @@ button{font:inherit;color:inherit}
   .btn-emergency{padding:.42rem .7rem;font-size:.85rem}
   .btn-emergency .pulse{width:6px;height:6px}
   .btn-emergency .lbl{display:none}
-  .btn-emergency::after{content:"Notfall";font-size:.85rem}
+  .btn-emergency::after{content:"Akut";font-size:.85rem}
   .hamburger{margin-left:.4rem;padding:.55rem;border-radius:10px}
   .hamburger svg{width:24px;height:24px}
 }
@@ -817,7 +829,7 @@ html.notfall-bypass .mgate{display:none !important}
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     </button>
     <button class="btn-emergency" onclick="openNotfall()" aria-label="Notfall">
-      <span class="pulse" aria-hidden="true"></span><span class="lbl">Notfall</span>
+      <span class="pulse" aria-hidden="true"></span><span class="lbl">Akut</span>
     </button>
     <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -1960,41 +1972,141 @@ function openPath(id){
   history.replaceState({path:id},"","#path/"+id);
 }
 
-/* PWA-safe navigation for Mobile-Bottom-Bar, Hamburger, Search, Notfall.
-   iOS Safari im standalone-Modus hat bekannte Quirks mit Hash-Anchor-Links —
-   wir erzwingen explizit scrollIntoView statt auf default-anchor-jump zu vertrauen. */
+/* ========================================================
+   MOBILE PWA HARDENING — universal delegation, defensive against iOS quirks
+   ======================================================== */
+
 function smoothScrollTo(targetId){
-  if (!targetId) return;
-  if (targetId === "#top"){
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
-  const target = document.querySelector(targetId);
-  if (target){
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  try {
+    if (!targetId) return;
+    if (targetId === "#top"){
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    const target = document.querySelector(targetId);
+    if (target){
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  } catch(e){ console.warn("smoothScrollTo:", e); }
 }
-document.querySelectorAll('.mob-bar a[href^="#"]').forEach(function(el){
-  el.addEventListener("click", function(e){
-    e.preventDefault();
-    smoothScrollTo(el.getAttribute("href"));
-  });
-});
-document.querySelectorAll('.nav a[href^="#"], .mobile-nav a[href^="#"], .hero a[href^="#"]:not(.chip[onclick]), .chip[href^="#"]').forEach(function(el){
-  if (el.getAttribute("onclick")) return; /* don't break onclick chips */
-  el.addEventListener("click", function(e){
-    const href = el.getAttribute("href");
-    if (!href || !href.startsWith("#") || href === "#") return;
+window.smoothScrollTo = smoothScrollTo;
+
+/* (1) Universal hash-anchor delegation — catches every <a href="#..."> on the page
+   regardless of when added or where located. Crucial for iOS PWA which would
+   otherwise open <a href="#x"> in Safari and abandon the PWA. */
+document.addEventListener("click", function(e){
+  try {
+    const link = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!link) return;
+    /* Skip links with custom onclick — they own their behavior */
+    if (link.hasAttribute("onclick")) return;
+    const href = link.getAttribute("href");
+    if (!href || href.length < 2 || href === "#") return;
+    /* Don't intercept #path/X — that's openPath territory */
+    if (href.indexOf("#path/") === 0) return;
     e.preventDefault();
     smoothScrollTo(href);
-    /* Close mobile nav if open */
-    const mn = document.getElementById("mobileNav");
-    if (mn && mn.classList.contains("open")){
-      mn.classList.remove("open");
-      document.getElementById("hamburger")?.setAttribute("aria-expanded","false");
+    if (history.replaceState) {
+      try { history.replaceState(null, "", href); } catch(_){}
     }
-  });
+    /* Auto-close mobile nav if it's open */
+    const mn = document.getElementById("mobileNav");
+    if (mn && mn.classList.contains("open")) {
+      mn.classList.remove("open");
+      const h = document.getElementById("hamburger");
+      if (h) h.setAttribute("aria-expanded","false");
+    }
+  } catch(_){}
 });
+
+/* (2) Universal close-button delegation for modals/popups.
+   iOS PWA sometimes drops inline onclick on buttons inside fixed overlays;
+   this provides a guaranteed-working fallback. */
+document.addEventListener("click", function(e){
+  try {
+    const closeBtn = e.target.closest && e.target.closest(".modal-close, .np-close, .picker-close, .drawer-close, .lp-back");
+    if (!closeBtn) return;
+    const root = closeBtn.closest(".modal-backdrop, .np-backdrop, .picker-backdrop, .drawer-backdrop, .lp-overlay");
+    if (!root) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const id = root.id;
+    if (id === "diagModal" && typeof closeDiag === "function") return closeDiag();
+    if (id === "kbModal" && typeof closeKB === "function") return closeKB();
+    if (id === "npBackdrop" && typeof closeNotfall === "function") return closeNotfall();
+    if (id === "pickerBackdrop" && typeof closePicker === "function") return closePicker();
+    if (id === "drawer" || id === "drawerBackdrop") { if (typeof closeDrawer === "function") return closeDrawer(); }
+    if (id === "lpOverlay" && typeof closePath === "function") return closePath();
+    /* Generic fallback */
+    root.classList.remove("open");
+    document.body.style.overflow = "";
+  } catch(_){}
+});
+
+/* (3) Swipe-down-to-close for modal-style overlays on touch devices */
+function enableSwipeDownClose(rootEl, innerSelector, closeFn){
+  if (!rootEl || !("ontouchstart" in document)) return;
+  let startY = 0, startTime = 0, active = false, dragInner = null;
+  rootEl.addEventListener("touchstart", function(e){
+    if (!rootEl.classList.contains("open")) return;
+    const inner = rootEl.querySelector(innerSelector);
+    if (!inner) return;
+    /* Don't hijack swipes when user is mid-scroll inside the inner content */
+    if (inner.scrollTop > 4) return;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+    active = true;
+    dragInner = inner;
+  }, { passive: true });
+  rootEl.addEventListener("touchmove", function(e){
+    if (!active || !dragInner) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 0) {
+      dragInner.style.transform = "translateY(" + Math.min(dy * 0.55, 220) + "px)";
+      dragInner.style.transition = "none";
+    }
+  }, { passive: true });
+  rootEl.addEventListener("touchend", function(e){
+    if (!active || !dragInner) return;
+    const dy = (e.changedTouches[0] || {}).clientY - startY;
+    const dt = Date.now() - startTime;
+    dragInner.style.transition = "transform .25s cubic-bezier(.2,.7,.3,1)";
+    if (dy > 80 && dt < 700) {
+      dragInner.style.transform = "translateY(110%)";
+      setTimeout(function(){
+        dragInner.style.transform = "";
+        dragInner.style.transition = "";
+        if (typeof closeFn === "function") closeFn();
+      }, 240);
+    } else {
+      dragInner.style.transform = "";
+    }
+    active = false;
+    dragInner = null;
+  });
+  rootEl.addEventListener("touchcancel", function(){
+    if (dragInner){
+      dragInner.style.transform = "";
+      dragInner.style.transition = "";
+    }
+    active = false;
+    dragInner = null;
+  });
+}
+/* Defer swipe-handler registration until DOM is fully wired */
+(function wireSwipe(){
+  function go(){
+    enableSwipeDownClose(document.getElementById("diagModal"), ".modal", function(){ if (typeof closeDiag==="function") closeDiag(); });
+    enableSwipeDownClose(document.getElementById("kbModal"), ".modal", function(){ if (typeof closeKB==="function") closeKB(); });
+    enableSwipeDownClose(document.getElementById("npBackdrop"), ".np-modal", function(){ if (typeof closeNotfall==="function") closeNotfall(); });
+    enableSwipeDownClose(document.getElementById("pickerBackdrop"), ".picker", function(){ if (typeof closePicker==="function") closePicker(); });
+  }
+  if (document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", go);
+  } else {
+    go();
+  }
+})();
 
 /* TOC click handling — single document-level delegation, runs ONCE.
    Catches buttons even when they're regenerated each time openPath fires. */
