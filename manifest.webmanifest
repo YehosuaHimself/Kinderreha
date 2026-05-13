@@ -1,0 +1,65 @@
+{
+  "name": "Wissens-Hub Tagesbetreuung",
+  "short_name": "Wissens-Hub",
+  "description": "Single Source of Truth für das Erzieher-Team der Tagesbetreuung Kinderreha — Fachklinik Prinzregent Luitpold Scheidegg",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#fbfaf7",
+  "theme_color": "#ac1d3c",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["education", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Notfall",
+      "short_name": "Notfall",
+      "description": "Notfallnummer und Sofortprotokolle",
+      "url": "./?action=notfall",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Diagnose-Karten",
+      "short_name": "Diagnose",
+      "description": "Diagnose-Karten und Handlungsleitfäden",
+      "url": "./#diagnosen",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Lernpfade",
+      "short_name": "Lernen",
+      "description": "Schulungs-Pfade",
+      "url": "./#schulung",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    }
+  ]
+}

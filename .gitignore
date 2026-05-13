@@ -1,0 +1,40 @@
+# Editor / OS
+.~lock.*
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Build / scratch
+node_modules/
+package*.json
+build_*.js
+check*.js
+chk*.js
+verify_*.js
+test_*.*
+
+# Generated previews / crops (kept out of repo)
+preview*.png
+preview*.svg
+prev_*.png
+prev_*.svg
+footer_*.png
+masthead_*.png
+cover_v*.png
+investment_*.png
+brf_p*.png
+p1hi-*.png
+p2hi-*.png
+v3p*.png
+test_qr*
+verify_qr*
+
+# Intermediate QR generations
+notfall_qr*.svg
+notfall_qr*.png
+icon-preview-*.png
+
+# Local PDF builds we don't want to track
+*.tmp
+.~lock.*#
